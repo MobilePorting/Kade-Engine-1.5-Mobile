@@ -236,7 +236,9 @@ class PlayState extends MusicBeatState
 		repPresses = 0;
 		repReleases = 0;
 
+		#if android
     executeModchart = openfl.utils.Assets.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/modchart.lua");
+    #end
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets
 		#end
