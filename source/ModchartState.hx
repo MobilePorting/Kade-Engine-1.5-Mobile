@@ -1,9 +1,9 @@
 // this file is for modchart things, this is to declutter playstate.hx
 
 // Lua
+#if not html5
 import flixel.graphics.FlxGraphic;
-import flixel.graphics.frames.FlxAtlasFrames;
-#if windows
+import flixel.graphics.frames.FlxAtlasFram
 import flixel.tweens.FlxEase;
 import openfl.filters.ShaderFilter;
 import flixel.tweens.FlxTween;
