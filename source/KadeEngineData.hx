@@ -76,8 +76,10 @@ class KadeEngineData
 			FlxG.save.data.cpuStrums = true;
 
 		Conductor.recalculateTimings();
-		PlayerSettings.player1.controls.loadKeyBinds();
+                PlayerSettings.player1.controls.loadKeyBinds();
+                #if not html5
 		KeyBinds.keyCheck();
+                #end
 
 		Main.watermarks = FlxG.save.data.watermark;
 
