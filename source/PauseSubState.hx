@@ -1,7 +1,7 @@
 package;
 
 import openfl.Lib;
-#if windows
+#if not html5
 import llua.Lua;
 #end
 import Controls.Control;
@@ -189,7 +189,7 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.save.data.downscroll = false;
 					}
 					PlayState.loadRep = false;
-					#if windows
+					#if not html5
 					if (PlayState.luaModchart != null)
 					{
 						PlayState.luaModchart.die();
