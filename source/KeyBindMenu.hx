@@ -2,7 +2,7 @@ package;
 
 /// Code created by Rozebud for FPS Plus (thanks rozebud)
 // modified by KadeDev for use in Kade Engine/Tricky
-
+#if not html5
 import flixel.util.FlxAxes;
 import flixel.FlxSubState;
 import Options.Option;
@@ -271,3 +271,4 @@ class KeyBindMenu extends FlxSubState
             curSelected = 3;
     }
 }
+#end
