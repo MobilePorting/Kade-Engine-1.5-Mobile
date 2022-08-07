@@ -76,6 +76,7 @@ class Option
 
 class DFJKOption extends Option
 {
+        #if not html5
 	private var controls:Controls;
 
 	public function new(controls:Controls)
@@ -94,6 +95,7 @@ class DFJKOption extends Option
 	{
 		return "Key Bindings";
 	}
+        #end
 }
 
 class CpuStrums extends Option
