@@ -400,7 +400,6 @@ class Controls extends FlxActionSet
 					if (Tinputs[x] == action.inputs[i])
 						action.remove(action.inputs[i]);
 				}
-                            }
 			}
 		}
 	}
