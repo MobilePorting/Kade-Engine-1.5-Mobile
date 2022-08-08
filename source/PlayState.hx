@@ -1,7 +1,7 @@
 package;
 
 #if android
-import android.flixel.FlxVirtualPad
+import android.flixel.FlxVirtualPad;
 #end
 import flixel.input.keyboard.FlxKey;
 import haxe.Exception;
