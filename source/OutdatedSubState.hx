@@ -89,6 +89,7 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+                #if android
                 for (touch in FlxG.touches.list)
 		if (touch.justPressed)
 		{
