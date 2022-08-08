@@ -2411,9 +2411,9 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-                #if android
-                androidControls.visible = false;
-                #end
+	  #if android
+	  androidControls.visible = false;
+	  #end
 
 		if (!loadRep)
 			rep.SaveReplay(saveNotes);
@@ -2428,8 +2428,7 @@ class PlayState extends MusicBeatState
 			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
 
 		#if not html5
-		if (luaModchart != null)
-		{
+		if (luaModchart != null) {
 			luaModchart.die();
 			luaModchart = null;
 		}
@@ -2470,8 +2469,7 @@ class PlayState extends MusicBeatState
 					FlxG.switchState(new StoryMenuState());
 
 					#if not html5
-					if (luaModchart != null)
-					{
+					if (luaModchart != null) {
 						luaModchart.die();
 						luaModchart = null;
 					}
