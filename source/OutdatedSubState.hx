@@ -43,14 +43,18 @@ class OutdatedSubState extends MusicBeatState
 		add(kadeLogo);
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
+                        #if android
+                        "Your Kade Engine is outdated!\nYou are on "
+			+ MainMenuState.kadeEngineVer
+			+ "\nBeacuse This Is Old Port Lmfao"
+			+ "\n\nTouch to contiune",
+                        #else
 			"Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
-			+ "\nwhile the most recent version is " + needVer + "."
-			+ "\n\nWhat's new:\n\n"
-			+ currChanges
-			+ "\n& more changes and bugfixes in the full changelog"
-			+ "\n\nPress Space to view the full changelog and update\nor ESCAPE to ignore this",
+			+ "\nBeacuse This Is Old Port Lmfao"
+			+ "\n\nPress ENTER to contiune",
 			32);
+                        #end
 		
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
@@ -84,15 +88,19 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.ACCEPT)
+                for (touch in FlxG.touches.list)
+		if (touch.justPressed)
 		{
-			fancyOpenURL("https://kadedev.github.io/Kade-Engine/changelogs/changelog-" + needVer);
-		}
-		if (controls.BACK)
+			leftState = true;
+			FlxG.switchState(new MainMenuState());
+		} 
+		#else
+		if (controls.ACCEPT)
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
 		}
+                #end
 		super.update(elapsed);
 	}
 }
