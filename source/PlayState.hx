@@ -1,5 +1,8 @@
 package;
 
+#if android
+import android.flixel.FlxVirtualPad
+#end
 import flixel.input.keyboard.FlxKey;
 import haxe.Exception;
 import openfl.geom.Matrix;
@@ -971,6 +974,11 @@ class PlayState extends MusicBeatState
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
+
+                #if android
+                addAndroidControls();
+                #end
+
 		if (FlxG.save.data.songPosition)
 		{
 			songPosBG.cameras = [camHUD];
@@ -1141,6 +1149,10 @@ class PlayState extends MusicBeatState
 	function startCountdown():Void
 	{
 		inCutscene = false;
+
+                #if android
+                androidControls.visible = true;
+                #end
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
@@ -2399,6 +2411,10 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
+                #if android
+                androidControls.visible = false;
+                #end
+
 		if (!loadRep)
 			rep.SaveReplay(saveNotes);
 		else
