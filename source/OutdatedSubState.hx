@@ -46,13 +46,14 @@ class OutdatedSubState extends MusicBeatState
                         #if android
                         "Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
-			+ "\nBeacuse This Is Old Port Lmfao"
-			+ "\n\nTouch to contiune",
+			+ "\nBeacuse this is old port lmfao"
+			+ "\n\nTouch To Contiune",
+                        32);
                         #else
 			"Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
-			+ "\nBeacuse This Is Old Port Lmfao"
-			+ "\n\nPress ENTER to contiune",
+			+ "\nBeacuse this is old port lmfao"
+			+ "\n\nPress ENTER to Contiune",
 			32);
                         #end
 		
