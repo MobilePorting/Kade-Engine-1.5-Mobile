@@ -44,7 +44,6 @@ jobs:
           haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
           haxelib git polymod https://github.com/MasterEric/polymod.git
           haxelib git extension-webm https://github.com/mcagabe19/extension-webm.git
-          haxelib run lime rebuild extension-webm windows
 
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
@@ -93,7 +92,6 @@ jobs:
           haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
           haxelib git polymod https://github.com/MasterEric/polymod.git
           haxelib git extension-webm https://github.com/mcagabe19/extension-webm.git
-          haxelib run lime rebuild extension-webm windows
 
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
