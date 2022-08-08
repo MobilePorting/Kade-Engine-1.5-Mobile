@@ -89,6 +89,11 @@ class PauseSubState extends MusicBeatSubstate
 		changeSelection();
 
 		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
+
+                #if android
+                addVirtualPad(UP_DOWN, A);
+                addPadCamera();
+                #end
 	}
 
 	override function update(elapsed:Float)
@@ -98,25 +103,35 @@ class PauseSubState extends MusicBeatSubstate
 
 		super.update(elapsed);
 
-		var upP = controls.UP_P;
-		var downP = controls.DOWN_P;
-		var leftP = controls.LEFT_P;
-		var rightP = controls.RIGHT_P;
+		#if android
+		var UP_P = virtualPad.buttonUp.justPressed;
+		var DOWN_P = virtualPad.buttonDown.justPressed;
+		var LEFT_P = virtualPad.buttonLeft.justPressed;
+		var RIGHT_P = virtualPad.buttonRight.justPressed;
+		var accepted = virtualPad.buttonA.justPressed;
+		var BACK = virtualPad.buttonB.justPressed;
+		#elseif desktop
+		var UP_P = controls.UP_P;
+		var DOWN_P = controls.DOWN_P;
+		var LEFT_P = controls.LEFT_P;
+		var RIGHT_P = controls.RIGHT_P;
 		var accepted = controls.ACCEPT;
+		var BACK = controls.BACK;
+		#end
 		var oldOffset:Float = 0;
 		var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
 
-		if (upP)
+		if (UP_P)
 		{
 			changeSelection(-1);
    
-		}else if (downP)
+		}else if (DOWN_P)
 		{
 			changeSelection(1);
 		}
 		
 		#if cpp
-			else if (leftP)
+			else if (LEFT_P)
 			{
 				oldOffset = PlayState.songOffset;
 				PlayState.songOffset -= 1;
@@ -143,7 +158,7 @@ class PauseSubState extends MusicBeatSubstate
 					cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 					offsetChanged = true;
 				}
-			}else if (rightP)
+			}else if (RIGHT_P)
 			{
 				oldOffset = PlayState.songOffset;
 				PlayState.songOffset += 1;
