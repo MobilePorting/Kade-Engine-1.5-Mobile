@@ -1,4 +1,3 @@
-#if not html5
 import flixel.FlxG;
 import flixel.input.FlxInput;
 import flixel.input.actions.FlxAction;
@@ -49,4 +48,3 @@ class KeyBinds
     }
 
 }
-#end
