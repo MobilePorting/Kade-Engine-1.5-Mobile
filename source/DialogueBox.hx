@@ -176,49 +176,9 @@ class DialogueBox extends FlxSpriteGroup
 			startDialogue();
 			dialogueStarted = true;
 		}
-
-                #if android
+		
 		for (touch in FlxG.touches.list)
-		if (touch.justPressed && dialogueStarted == true)
-
-		        remove(dialogue);
-				
-			FlxG.sound.play(Paths.sound('clickText'), 0.8);
-
-			if (dialogueList[1] == null && dialogueList[0] != null)
-			{
-				if (!isEnding)
-				{
-					isEnding = true;
-
-					if (PlayState.SONG.song.toLowerCase() == 'senpai' || PlayState.SONG.song.toLowerCase() == 'thorns')
-						FlxG.sound.music.fadeOut(2.2, 0);
-
-					new FlxTimer().start(0.2, function(tmr:FlxTimer)
-					{
-						box.alpha -= 1 / 5;
-						bgFade.alpha -= 1 / 5 * 0.7;
-						portraitLeft.visible = false;
-						portraitRight.visible = false;
-						swagDialogue.alpha -= 1 / 5;
-						dropText.alpha = swagDialogue.alpha;
-					}, 5);
-
-					new FlxTimer().start(1.2, function(tmr:FlxTimer)
-					{
-						finishThing();
-						kill();
-					});
-				}
-			}
-			else
-			{
-				dialogueList.remove(dialogueList[0]);
-				startDialogue();
-			}
-		}
-		#else
-		if (FlxG.keys.justPressed.ANY && dialogueStarted == true)
+		if (FlxG.keys.justPressed.ANY || touch.justPressed && dialogueStarted == true)
 		{
 			remove(dialogue);
 				
@@ -256,7 +216,6 @@ class DialogueBox extends FlxSpriteGroup
 				startDialogue();
 			}
 		}
-		#end
 		super.update(elapsed);
 	}
 
