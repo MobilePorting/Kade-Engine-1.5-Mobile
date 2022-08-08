@@ -10,7 +10,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 
-
 #if windows
 import Discord.DiscordClient;
 #end
@@ -138,6 +137,10 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
+                #if android
+                addVirtualPad(LEFT_FULL, A_B);
+                #end
+
 		super.create();
 	}
 
@@ -177,25 +180,37 @@ class FreeplayState extends MusicBeatState
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
 
-		var upP = controls.UP_P;
-		var downP = controls.DOWN_P;
+		#if android
+		var UP_P = virtualPad.buttonUp.justPressed;
+		var DOWN_P = virtualPad.buttonDown.justPressed;
+		var LEFT_P = virtualPad.buttonLeft.justPressed;
+		var RIGHT_P = virtualPad.buttonRight.justPressed;
+		var accepted = virtualPad.buttonA.justPressed;
+		var BACK = virtualPad.buttonB.justPressed;
+		#elseif desktop
+		var UP_P = controls.UP_P;
+		var DOWN_P = controls.DOWN_P;
+		var LEFT_P = controls.LEFT_P;
+		var RIGHT_P = controls.RIGHT_P;
 		var accepted = controls.ACCEPT;
+		var BACK = controls.BACK;
+		#end
 
-		if (upP)
+		if (UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (downP)
+		if (DOWN_P)
 		{
 			changeSelection(1);
 		}
 
-		if (controls.LEFT_P)
+		if (LEFT_P)
 			changeDiff(-1);
-		if (controls.RIGHT_P)
+		if (RIGHT_P)
 			changeDiff(1);
 
-		if (controls.BACK)
+		if (BACK)
 		{
 			FlxG.switchState(new MainMenuState());
 		}
