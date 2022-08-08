@@ -58,7 +58,6 @@ jobs:
           haxelib git linc_luajit https://github.com/91ebagacm/linc_luajit.git
           haxelib git polymod https://github.com/MasterEric/polymod.git
           haxelib git extension-webm https://github.com/mcagabe19/extension-webm.git
-          haxelib run lime rebuild extension-webm android
           haxelib git extension-androidtools https://github.com/91ebagacm/extension-androidtools.git
 
       - name: Create Version Tag
