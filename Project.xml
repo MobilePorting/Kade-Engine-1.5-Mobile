@@ -122,7 +122,7 @@
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="windows"/>
-	<haxelib name="linc_luajit" unless="web"/>
+	<haxelib name="linc_luajit" unless="web || nolua"/>
         <haxelib name="extension-androidtools" if="android"/>
         <haxelib name="extension-webm" unless="mobile"/>
         <haxelib name="extension-videoview" if="android"/>
