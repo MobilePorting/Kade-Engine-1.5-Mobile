@@ -43,14 +43,22 @@ class OutdatedSubState extends MusicBeatState
 		add(kadeLogo);
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-                        #if android
+                        #if mobile
                         "Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
 			+ "\nBeacuse this is old port lmfao"
-			+ "\n\nTouch To Contiune",
+			+ "\n\nTouch Your Screen To Contiune",
                         32);
-                        #else
+                        #end
+                        #if web
 			"Your Kade Engine is outdated!\nYou are on "
+			+ MainMenuState.kadeEngineVer
+			+ "\nBeacuse this is old port lmfao"
+			+ "\n\nPress ENTER or Touch Your Screen to Contiune",
+			32);
+                        #end
+                        #if desktop
+                        "Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
 			+ "\nBeacuse this is old port lmfao"
 			+ "\n\nPress ENTER to Contiune",
@@ -89,13 +97,20 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-                #if android
+                #if mobile
                 for (touch in FlxG.touches.list)
 		if (touch.justPressed)
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());
 		} 
+                #end
+                #if web
+                if (controls.ACCEPT || FlxG.mouse.pressed)
+		{
+			leftState = true;
+			FlxG.switchState(new MainMenuState());
+		}
 		#else
 		if (controls.ACCEPT)
 		{
