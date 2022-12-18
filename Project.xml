@@ -27,7 +27,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="1280" height="720" resizable="false" allow-shaders="true" require-shaders="true"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -40,7 +40,10 @@
 
 	<classpath name="source" />
 
-        <assets path="assets/android" if="android"/>
+        <define name="mobileC" if="mobile" />
+        <define name="mobileCweb" if="web" />
+
+        <assets path="mobile" rename="assets/mobile" if="mobile" />
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>
@@ -115,7 +118,7 @@
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
-	<haxelib name="newgrounds"/>
+	<!-- <haxelib name="newgrounds"/> -->
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="windows"/>
@@ -169,10 +172,38 @@
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
 	<haxedef name="HXCPP_STACK_LINE" if="release" />
 
-	<!--Android-Stuff-->
-	<android permission="android.permission.ACCESS_NETWORK_STATE"/>
-	<android permission="android.permission.INTERNET"/>
-        <android target-sdk-version="29" />
+	
+	<!--Allow working memory greater than 1 Gig-->
+	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
+
+	<!--Always enable Null Object Reference check-->
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE"/>
+
+	<section if="android">
+                <!--Allow It's Game-->
+                <config:android isGame="true" />
+
+                <!--Allow Record Internal Audio-->
+                <!-- <config:android target-sdk-version="30" />-->
+
+		<!--Permissions-->
+		<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
+		<config:android permission="android.permission.ACCESS_WIFI_STATE" />
+		<config:android permission="android.permission.INTERNET" />
+		<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+		<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
+
+		<!--Gradle-->
+		<config:android gradle-version="7.6" gradle-plugin="7.3.1" />
+	</section>
+
+	<section if="ios">
+		<!--Dependency--> 
+		<dependency name="Metal.framework" />
+		<dependency name="WebKit.framework" />
+	</section>
 
 	<!-- _________________________________ Custom _______________________________ -->
 
@@ -186,7 +217,6 @@
 	<icon path="art/icon256.png" size='256'/>
 	<icon path="art/icon512.png" size='512'/>
 	<icon path="art/iconOG.png" />
-
 
 	<!-- <haxedef name="SKIP_TO_PLAYSTATE" if="debug" /> -->
 	<haxedef name="NG_LOGIN" if="newgrounds" />
