@@ -124,6 +124,8 @@
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="linc_luajit" unless="web"/>
         <haxelib name="extension-androidtools" if="android"/>
+        <haxelib name="extension-webm" unless="mobile"/>
+        <haxelib name="extension-videoview" if="android"/>
 
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
 
@@ -172,7 +174,6 @@
 	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
 	<haxedef name="HXCPP_STACK_LINE" if="release" />
 
-	
 	<!--Allow working memory greater than 1 Gig-->
 	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
