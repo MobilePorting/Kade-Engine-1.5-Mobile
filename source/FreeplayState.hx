@@ -137,7 +137,7 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
-                #if android
+                #if (mobileC || mobileCweb)
                 addVirtualPad(LEFT_FULL, A_B);
                 #end
 
@@ -180,42 +180,26 @@ class FreeplayState extends MusicBeatState
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
 
-		#if android
-		var UP_P = virtualPad.buttonUp.justPressed;
-		var DOWN_P = virtualPad.buttonDown.justPressed;
-		var LEFT_P = virtualPad.buttonLeft.justPressed;
-		var RIGHT_P = virtualPad.buttonRight.justPressed;
-		var accepted = virtualPad.buttonA.justPressed;
-		var BACK = virtualPad.buttonB.justPressed;
-		#elseif desktop
-		var UP_P = controls.UP_P;
-		var DOWN_P = controls.DOWN_P;
-		var LEFT_P = controls.LEFT_P;
-		var RIGHT_P = controls.RIGHT_P;
-		var accepted = controls.ACCEPT;
-		var BACK = controls.BACK;
-		#end
-
-		if (UP_P)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (DOWN_P)
+		if (controls.DOWN_P)
 		{
 			changeSelection(1);
 		}
 
-		if (LEFT_P)
+		if (controls.LEFT_P)
 			changeDiff(-1);
-		if (RIGHT_P)
+		if (controls.RIGHT_P)
 			changeDiff(1);
 
-		if (BACK)
+		if (controls.BACK)
 		{
 			FlxG.switchState(new MainMenuState());
 		}
 
-		if (accepted)
+		if (controls.ACCEPT)
 		{
 			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
