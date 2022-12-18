@@ -130,7 +130,7 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
-                #if android
+                #if (mobileC || mobileCweb)
                 addVirtualPad(UP_DOWN, A_B);
                 #end
 
@@ -146,38 +146,26 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-                #if android
-		var UP_P = virtualPad.buttonUp.justPressed;
-		var DOWN_P = virtualPad.buttonDown.justPressed;
-		var accepted = virtualPad.buttonA.justPressed;
-		var BACK = virtualPad.buttonB.justPressed;
-		#elseif desktop
-		var UP_P = controls.UP_P;
-		var DOWN_P = controls.DOWN_P;
-		var accepted = controls.ACCEPT;
-		var BACK = controls.BACK;
-		#end
-
 		if (!selectedSomethin)
 		{
-			if (UP_P)
+			if (controls.UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(-1);
 			}
 
-			if (DOWN_P)
+			if (controls.DOWN_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(1);
 			}
 
-			if (BACK)
+			if (controls.BACK)
 			{
 				FlxG.switchState(new TitleState());
 			}
 
-			if (accepted)
+			if (controls.ACCEPT)
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
