@@ -40,6 +40,7 @@
 
 	<classpath name="source" />
 
+        <define name="Lua" unless="nolua || web" />
         <define name="mobileC" if="mobile" />
         <define name="mobileCweb" if="web" />
 
@@ -122,7 +123,7 @@
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="windows"/>
-	<haxelib name="linc_luajit" unless="web || nolua"/>
+	<haxelib name="linc_luajit" if="Lua"/>
         <haxelib name="extension-androidtools" if="android"/>
         <haxelib name="extension-webm" unless="mobile"/>
         <haxelib name="extension-videoview" if="android"/>
