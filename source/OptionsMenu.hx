@@ -28,13 +28,13 @@ class OptionsMenu extends MusicBeatState
 			new DFJKOption(controls),
 			new DownscrollOption("Change the layout of the strumline."),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
-			new Judgement("Customize your Hit Timings (LEFT or RIGHT)")
+			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
 			new FPSCapOption("Cap your FPS"),
 			new ScrollSpeedOption("Change your scroll speed (1 = Chart dependent)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
 			new ResetButtonOption("Toggle pressing R to gameover."),
-		        // new OffsetMenu("Get a note offset based off of your inputs!"),
-			// new CustomizeGameplay("Drag'n'Drop Gameplay Modules around to your preference")
+		        new OffsetMenu("Get a note offset based off of your inputs!"),
+			new CustomizeGameplay("Drag'n'Drop Gameplay Modules around to your preference")
 		]),
 		new OptionCategory("Appearance", [
 			new DistractionsAndEffectsOption("Toggle stage distractions that can hinder your gameplay."),
@@ -118,7 +118,7 @@ class OptionsMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 
-                #if mobile
+                #if (mobileC || mobileCweb)
                 if (virtualPad.buttonC.justPressed)
                 {
                 removeVirtualPad();
