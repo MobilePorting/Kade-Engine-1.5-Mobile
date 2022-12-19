@@ -113,7 +113,7 @@ class MusicBeatState extends FlxUIState
 
 	override function destroy()
 	{
-		#if mobile
+		#if (mobileC || mobileCweb)
 		if (trackedInputsMobileControls.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsMobileControls);
 
@@ -123,7 +123,7 @@ class MusicBeatState extends FlxUIState
 
 		super.destroy();
 
-		#if mobile
+		#if (mobileC || mobileCweb)
 		if (virtualPad != null)
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
 
