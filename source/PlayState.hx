@@ -1370,7 +1370,7 @@ class PlayState extends MusicBeatState
 
 		// Per song offset check
 		#if !web
-			var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
+			var songPath = SUtil.getStorageDirectory() + 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
 			for(file in sys.FileSystem.readDirectory(songPath))
 			{
 				var path = haxe.io.Path.join([songPath, file]);
