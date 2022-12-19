@@ -2400,11 +2400,8 @@ class PlayState extends MusicBeatState
 		if (!inCutscene)
 			keyShit();
 
-
-		#if debug
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
-		#end
 	}
 
 	function endSong():Void
@@ -2413,7 +2410,6 @@ class PlayState extends MusicBeatState
 	  mobileControls.visible = false;
 	  #end
 
-                #if windows
 		if (!loadRep)
 			rep.SaveReplay(saveNotes);
 		else
@@ -2422,7 +2418,6 @@ class PlayState extends MusicBeatState
 			FlxG.save.data.scrollSpeed = 1;
 			FlxG.save.data.downscroll = false;
 		}
-                #end
 
 		if (FlxG.save.data.fpsCap > 290)
 			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
