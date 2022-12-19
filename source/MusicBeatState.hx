@@ -1,6 +1,6 @@
 package;
 
-#if mobile
+#if (mobileC || mobileCweb)
 import mobile.MobileControls;
 import mobile.flixel.FlxVirtualPad;
 import flixel.FlxCamera;
@@ -32,7 +32,7 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	#if mobile
+	#if (mobileC || mobileCweb)
 	var mobileControls:MobileControls;
 	var virtualPad:FlxVirtualPad;
 	var trackedInputsMobileControls:Array<FlxActionInput> = [];
