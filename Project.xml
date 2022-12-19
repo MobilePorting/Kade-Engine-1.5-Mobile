@@ -41,7 +41,7 @@
 	<classpath name="source" />
 
         <define name="Lua" unless="nolua || web" />
-        <define name="mobileC" if="mobile" />
+        <define name="mobileC" if="mobile || desktop" />
         <define name="mobileCweb" if="web" />
 
         <assets path="mobile" rename="assets/mobile" if="mobile" />
