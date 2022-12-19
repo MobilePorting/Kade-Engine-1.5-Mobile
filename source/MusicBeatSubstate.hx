@@ -2,6 +2,7 @@ package;
 
 #if mobile
 import mobile.flixel.FlxVirtualPad;
+import mobile.MobileControls;
 import flixel.FlxCamera;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
