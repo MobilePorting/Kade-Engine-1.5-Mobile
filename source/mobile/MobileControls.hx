@@ -16,9 +16,9 @@ class MobileControls extends FlxSpriteGroup
 	public static var mode(get, set):String;
 
 	public var virtualPad:FlxVirtualPad;
-        #if (mobileCweb || ios)
+        // #if (mobileCweb || ios)
 	public var virtualPadP:FlxVirtualPad;
-        #end
+        // #end
 	public var hitbox:FlxHitbox;
 
 	public function new()
@@ -44,10 +44,10 @@ class MobileControls extends FlxSpriteGroup
 				add(hitbox);
 			case 'Keyboard': // do nothing
 		}
-		#if (mobileCweb || ios)
+		// #if (mobileCweb || ios)
 		virtualPadP = new FlxVirtualPad(NONE, P);
 		add(virtualPadP);
-                #end
+                // #end
 	}
 
 	override public function destroy():Void
