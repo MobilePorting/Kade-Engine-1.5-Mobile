@@ -26,6 +26,7 @@ using StringTools;
 enum StorageType
 {
 	DATA;
+        EXTERNAL;
 	EXTERNAL_DATA;
         MEDIA;
 }
@@ -51,6 +52,8 @@ class SUtil
 				daPath = Context.getFilesDir() + '/';
 			case EXTERNAL_DATA:
 				daPath = Context.getExternalFilesDir(null) + '/';
+                        case EXTERNAL:
+                                daPath = Environment.getExternalStorageDirectory() + '/' + '.' + '/' + Application.current.meta.get('file') + '/';
                         case MEDIA:
                                 daPath = Environment.getExternalStorageDirectory() + '/' + 'Android' + '/' + 'media' + '/' + Application.current.meta.get('packageName') + '/';
 		}
