@@ -137,6 +137,24 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
+                var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
+		textBG.alpha = 0.6;
+		add(textBG);
+
+                #if PRELOAD_ALL
+		#if android
+		var leText:String = "Press C to listen to the Song.";
+		var size:Int = 16;
+		#else
+		var leText:String = "Press SPACE to listen to the Song.";
+		var size:Int = 16;
+		#end
+		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
+		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
+		text.scrollFactor.set();
+		add(text);
+                #end
+
                 #if (mobileC || mobileCweb)
                 addVirtualPad(LEFT_FULL, A_B);
                 #end
@@ -201,6 +219,8 @@ class FreeplayState extends MusicBeatState
 
 		if (controls.ACCEPT)
 		{
+                        destroyFreeplayVocals();
+
 			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
 			trace(poop);
@@ -212,6 +232,29 @@ class FreeplayState extends MusicBeatState
 			trace('CUR WEEK' + PlayState.storyWeek);
 			LoadingState.loadAndSwitchState(new PlayState());
 		}
+
+                if(#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
+                if(instPlaying != curSelected) {
+                #if PRELOAD_ALL
+		destroyFreeplayVocals();
+		FlxG.sound.music.volume = 0;
+		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+		PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+		if (PlayState.SONG.needsVoices)
+			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+		else
+		        vocals = new FlxSound();
+
+		FlxG.sound.list.add(vocals);
+		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
+		vocals.play();
+		vocals.persist = true;
+		vocals.looped = true;
+		vocals.volume = 0.7;
+		instPlaying = curSelected;
+		#end
+                }
+                }
 	}
 
 	function changeDiff(change:Int = 0)
@@ -261,10 +304,6 @@ class FreeplayState extends MusicBeatState
 		// lerpScore = 0;
 		#end
 
-		#if PRELOAD_ALL
-		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
-		#end
-
 		var bullShit:Int = 0;
 
 		for (i in 0...iconArray.length)
@@ -288,6 +327,14 @@ class FreeplayState extends MusicBeatState
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
+	}
+
+        public static function destroyFreeplayVocals() {
+		if(vocals != null) {
+			vocals.stop();
+			vocals.destroy();
+		}
+		vocals = null;
 	}
 }
 
