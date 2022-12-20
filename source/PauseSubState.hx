@@ -1,7 +1,7 @@
 package;
 
 import openfl.Lib;
-#if not html5
+#if !web
 import llua.Lua;
 #end
 import Controls.Control;
@@ -21,7 +21,7 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to menu'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Charting Menu', 'Exit to menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -104,7 +104,7 @@ class PauseSubState extends MusicBeatSubstate
 		super.update(elapsed);
 
 		var oldOffset:Float = 0;
-		var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
+		var songPath = SUtil.getStorageDirectory() + 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
 
 		if (controls.UP_P)
 		{
@@ -115,7 +115,7 @@ class PauseSubState extends MusicBeatSubstate
 			changeSelection(1);
 		}
 		
-		#if !web
+		#if cpp
 			else if (controls.LEFT_P)
 			{
 				oldOffset = PlayState.songOffset;
@@ -181,6 +181,15 @@ class PauseSubState extends MusicBeatSubstate
 					close();
 				case "Restart Song":
 					FlxG.resetState();
+                                case "Charting Menu":
+                                        #if !web
+					if (PlayState.luaModchart != null)
+					{
+						PlayState.luaModchart.die();
+						PlayState.luaModchart = null;
+					}
+					#end
+                                        FlxG.switchState(new ChartingState());
 				case "Exit to menu":
 					if(PlayState.loadRep)
 					{
@@ -189,7 +198,7 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.save.data.downscroll = false;
 					}
 					PlayState.loadRep = false;
-					#if not html5
+					#if !web
 					if (PlayState.luaModchart != null)
 					{
 						PlayState.luaModchart.die();
