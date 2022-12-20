@@ -260,6 +260,8 @@ class FreeplayState extends MusicBeatState
                 }
 	}
 
+        private static var vocals:FlxSound = null;
+        var instPlaying:Int = -1;
 	function changeDiff(change:Int = 0)
 	{
 		curDifficulty += change;
