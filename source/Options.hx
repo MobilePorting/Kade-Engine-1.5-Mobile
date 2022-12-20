@@ -72,6 +72,65 @@ class Option
 	public function right():Bool { return throw "stub!"; }
 }
 
+class RenderOption extends Option
+{
+	private var rstr:String = "";
+
+	public function new(desc:String)
+	{
+                if (FlxG.save.data.render == 0) { 
+                    rstr = "ram";
+                } else if (FlxG.save.data.render == 1) { 
+                    rstr = "gpu flash";
+                } else if (FlxG.save.data.render == 2) {
+                    rstr = "gpu openfl";
+                }
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		FlxG.save.data.render += 1;
+                if (FlxG.save.data.render > 2) {
+                    FlxG.save.data.render = 0;
+                }
+                if (FlxG.save.data.render == 0) { 
+                    rstr = "ram";
+                } else if (FlxG.save.data.render == 1) { 
+                    rstr = "gpu flash";
+                } else if (FlxG.save.data.render == 2) {
+                    rstr = "gpu openfl";
+                }
+                display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "render: " + rstr;
+	}
+}
+
+class MiddleScroll extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+	public override function press():Bool
+	{
+		FlxG.save.data.middleScroll = !FlxG.save.data.middleScroll;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "MiddleScroll " + (!FlxG.save.data.middleScroll ? "off" : "on");
+	}
+}
 
 
 class DFJKOption extends Option
