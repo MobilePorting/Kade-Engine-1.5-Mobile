@@ -8,14 +8,14 @@ class KadeEngineData
                 if (FlxG.save.data.render == null)
                         FlxG.save.data.render = 0;
 
-                if (FlxG.save.data.middleScroll == null)
-                        FlxG.save.data.middleScroll = false;
-
                 if (FlxG.save.data.newInput == null)
 			FlxG.save.data.newInput = true;
 
 		if (FlxG.save.data.downscroll == null)
 			FlxG.save.data.downscroll = false;
+
+                if (FlxG.save.data.middleScroll == null)
+                        FlxG.save.data.middleScroll = false;
 
 		if (FlxG.save.data.dfjk == null)
 			FlxG.save.data.dfjk = false;
