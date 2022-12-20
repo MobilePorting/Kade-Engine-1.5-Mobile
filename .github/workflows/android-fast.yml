@@ -48,8 +48,6 @@ jobs:
           haxelib git extension-videoview https://github.com/MAJigsaw77/extension-videoview.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
       - name: Setup Lime
         run: |
           haxelib run lime setup -alias -y
@@ -60,7 +58,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -${{ matrix.arch }} --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -${{ matrix.arch }}
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
@@ -109,8 +107,6 @@ jobs:
           haxelib git extension-videoview https://github.com/MAJigsaw77/extension-videoview.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
       - name: Setup Lime
         run: |
           haxelib run lime setup -alias -y
@@ -121,7 +117,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -armv6 -${{ matrix.build }} -D nolua -D no-compilation -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -armv6 -${{ matrix.build }} -D nolua -D no-compilation -D macro-times -D analyzer-optimize
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
@@ -171,8 +167,6 @@ jobs:
           haxelib git extension-videoview https://github.com/MAJigsaw77/extension-videoview.git
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
-      - name: Create Version Tag
-        run: echo "${{github.run_id}}" > VERSION
       - name: Setup Lime
         run: |
           haxelib run lime setup -alias -y
@@ -183,7 +177,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -64 --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -64
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
