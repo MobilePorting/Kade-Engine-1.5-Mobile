@@ -50,7 +50,7 @@ class OutdatedSubState extends MusicBeatState
 			+ "\n\nTouch Your Screen To Contiune",
                         32);
                         #end
-                        #if web
+                        #if mobileCweb
 			"Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
 			+ "\nBeacuse this is old port lmfao"
@@ -105,7 +105,7 @@ class OutdatedSubState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 		} 
                 #end
-                #if web
+                #if mobileCweb
                 if (controls.ACCEPT || FlxG.mouse.pressed)
 		{
 			leftState = true;
