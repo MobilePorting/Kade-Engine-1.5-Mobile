@@ -32,9 +32,10 @@ jobs:
           haxe-version: 4.2.5
       - name: Install Haxelib
         run: |
+          sudo apt-get update ; sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev g++-multilib gcc-multilib libasound2-dev libx11-dev libxext-dev libxi-dev libxrandr-dev libxinerama-dev libmbedtls-dev libpng-dev libturbojpeg-dev libuv1-dev libvorbis-dev > /dev/null
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
-          haxelib git hxcpp https://github.com/mcagabe19/hxcpp-fastspeed > /dev/null
+          haxelib git hxcpp https://github.com/mcagabe19/hxcpp-fastspeed.git
           haxelib install openfl 9.1.0 --quiet
           haxelib install actuate --quiet
           haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
@@ -92,9 +93,10 @@ jobs:
           haxe-version: 4.2.5
       - name: Install Haxelib
         run: |
+          sudo apt-get update ; sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev g++-multilib gcc-multilib libasound2-dev libx11-dev libxext-dev libxi-dev libxrandr-dev libxinerama-dev libmbedtls-dev libpng-dev libturbojpeg-dev libuv1-dev libvorbis-dev > /dev/null
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
-          haxelib git hxcpp https://github.com/mcagabe19/hxcpp-fastspeed > /dev/null
+          haxelib git hxcpp https://github.com/mcagabe19/hxcpp-fastspeed.git
           haxelib install openfl 9.1.0 --quiet
           haxelib install actuate --quiet
           haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
@@ -151,9 +153,10 @@ jobs:
           haxe-version: 4.2.5
       - name: Install Haxelib
         run: |
+          sudo apt-get update ; sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev g++-multilib gcc-multilib libasound2-dev libx11-dev libxext-dev libxi-dev libxrandr-dev libxinerama-dev libmbedtls-dev libpng-dev libturbojpeg-dev libuv1-dev libvorbis-dev > /dev/null
           haxelib setup ~/haxelib
           haxelib git lime https://github.com/mcagabe19/lime --quiet
-          haxelib git hxcpp https://github.com/mcagabe19/hxcpp-fastspeed > /dev/null
+          haxelib git hxcpp https://github.com/mcagabe19/hxcpp-fastspeed.git
           haxelib install openfl 9.1.0 --quiet
           haxelib install actuate --quiet
           haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
