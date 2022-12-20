@@ -188,7 +188,7 @@
                 <config:android isGame="true" />
 
                 <!--Allow Record Internal Audio-->
-                <!-- <config:android target-sdk-version="30" />-->
+                <config:android target-sdk-version="29" />
 
 		<!--Permissions-->
 		<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
