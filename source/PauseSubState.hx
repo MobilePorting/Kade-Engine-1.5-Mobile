@@ -1,7 +1,7 @@
 package;
 
 import openfl.Lib;
-#if !web
+#if Lua
 import llua.Lua;
 #end
 import Controls.Control;
@@ -182,7 +182,7 @@ class PauseSubState extends MusicBeatSubstate
 				case "Restart Song":
 					FlxG.resetState();
                                 case "Charting Menu":
-                                        #if !web
+                                        #if Lua
 					if (PlayState.luaModchart != null)
 					{
 						PlayState.luaModchart.die();
@@ -198,7 +198,7 @@ class PauseSubState extends MusicBeatSubstate
 						FlxG.save.data.downscroll = false;
 					}
 					PlayState.loadRep = false;
-					#if !web
+					#if Lua
 					if (PlayState.luaModchart != null)
 					{
 						PlayState.luaModchart.die();
