@@ -14,7 +14,6 @@ import flixel.FlxG;
 
 class GameplayCustomizeState extends MusicBeatState
 {
-
     var defaultX:Float = FlxG.width * 0.55 - 135;
     var defaultY:Float = FlxG.height / 2 - 50;
 
@@ -63,7 +62,7 @@ class GameplayCustomizeState extends MusicBeatState
 
 		camFollow.setPosition(camPos.x, camPos.y);
 
-        add(bf);
+        //add(bf);
         add(dad);
 
         add(sick);
