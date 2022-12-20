@@ -6,6 +6,8 @@ class KadeEngineData
     public static function initSave()
     {
         if (FlxG.save.data.render==null){FlxG.save.data.render=0;}
+        if (FlxG.save.data.middleScroll == null)
+                        FlxG.save.data.middleScroll = false;
         if (FlxG.save.data.newInput == null)
 			FlxG.save.data.newInput = true;
 
