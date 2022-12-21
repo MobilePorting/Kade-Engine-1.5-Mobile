@@ -115,7 +115,7 @@ class PauseSubState extends MusicBeatSubstate
 			changeSelection(1);
 		}
 		
-		#if cpp
+		#if desktop
 			else if (controls.LEFT_P)
 			{
 				oldOffset = PlayState.songOffset;
