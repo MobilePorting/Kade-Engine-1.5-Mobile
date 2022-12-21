@@ -60,7 +60,7 @@ import openfl.filters.ShaderFilter;
 import Discord.DiscordClient;
 #end
 
-#if !web
+#if desktop
 import Sys;
 import sys.FileSystem;
 #end
@@ -1376,8 +1376,8 @@ class PlayState extends MusicBeatState
 		var playerCounter:Int = 0;
 
 		// Per song offset check
-		#if !web
-			var songPath = SUtil.getStorageDirectory() + 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
+		#if desktop
+			var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
 			for(file in sys.FileSystem.readDirectory(songPath))
 			{
 				var path = haxe.io.Path.join([songPath, file]);
