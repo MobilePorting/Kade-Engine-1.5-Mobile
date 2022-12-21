@@ -2,8 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-        <app title="Friday Night Funkin' Kade Engine (Debug)" file="Kade1.5" packageName="com.kadedev.kadeengine.debug" package="com.kadedev.kadeengine.debug" main="Main" version="0.2.7.1" company="ninjamuffin99" if="debug" />
-
+        <app title="Friday Night Funkin' Kade Engine (Debug)" file="Kade1.5(Debug)" packageName="com.kadedev.kadeengine.debug" package="com.kadedev.kadeengine.debug" main="Main" version="0.2.7.1" company="ninjamuffin99" if="debug" />
 	<app title="Friday Night Funkin' Kade Engine" file="Kade1.5" packageName="com.kadedev.kadeengine" package="com.kadedev.kadeengine" main="Main" version="0.2.7.1" company="ninjamuffin99" unless="debug" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
@@ -43,7 +42,7 @@
 	<classpath name="source" />
 
         <define name="Lua" unless="nolua || web" />
-        <define name="mobileC" if="mobile || desktop" />
+        <define name="mobileC" if="mobile" />
         <define name="mobileCweb" if="web" />
 
         <assets path="mobile" rename="assets/mobile" if="mobileC || mobileCweb" />
