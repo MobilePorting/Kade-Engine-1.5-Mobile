@@ -218,7 +218,6 @@ class PlayState extends MusicBeatState
 	public function addObject(object:FlxBasic) { add(object); }
 	public function removeObject(object:FlxBasic) { remove(object); }
 
-
 	override public function create()
 	{
                 Paths.clearUnusedMemory();
@@ -1052,6 +1051,11 @@ class PlayState extends MusicBeatState
 
 		if (!loadRep)
 			rep = new Replay("na");
+
+                #if mobileC
+                addVirtualPad(NONE, P);
+                addVirtualPadCamera();
+                #end
 
 		super.create();
 	}
