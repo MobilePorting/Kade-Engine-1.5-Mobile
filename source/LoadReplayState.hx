@@ -40,6 +40,7 @@ class LoadReplayState extends MusicBeatState
                 controlsStrings = sys.FileSystem.readDirectory(Sys.getCwd() + "/assets/replays/");
 		trace(controlsStrings);
         #end
+        #end
 
         controlsStrings.sort(Reflect.compare);
 
