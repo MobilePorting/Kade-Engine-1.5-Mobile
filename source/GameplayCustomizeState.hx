@@ -62,7 +62,7 @@ class GameplayCustomizeState extends MusicBeatState
 
 		camFollow.setPosition(camPos.x, camPos.y);
 
-        //add(bf);
+        add(bf);
         add(dad);
 
         add(sick);
