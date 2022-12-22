@@ -60,6 +60,9 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
         run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -${{ matrix.arch }}
+        env:
+          cert_pass: 123456
+          cert_alias_pass: 123456
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
@@ -120,6 +123,9 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
         run: haxelib run lime build android -armv6 -${{ matrix.build }} -D nolua -D no-compilation -D macro-times -D analyzer-optimize
+        env:
+          cert_pass: 123456
+          cert_alias_pass: 123456
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
@@ -181,6 +187,9 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
         run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -64
+        env:
+          cert_pass: 123456
+          cert_alias_pass: 123456
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
