@@ -23,11 +23,8 @@ install:
   - haxelib install flixel-ui 2.3.3 --quiet
   - haxelib install hscript 2.4.0 --quiet
   - haxelib git faxe https://github.com/uhrobots/faxe.git
-  - haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
-  - haxelib git extension-webm https://github.com/KadeDev/extension-webm.git
-  - haxelib run lime rebuild extension-webm linux -64
-  - haxelib run lime rebuild extension-webm linux -32
   - haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
+  - haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
   - haxelib install actuate 1.8.9 --quiet
   - haxelib list
   - cd /home/appveyor/projects/kade-engine-linux
@@ -35,7 +32,7 @@ install:
 build_script:
   - haxelib run lime build linux -64
   - mv /home/appveyor/projects/kade-engine-linux/export/release/linux/bin /home/appveyor/projects/kade-engine-linux/export/release/linux/bin64
-  - haxelib run lime build linux -32 
+  - haxelib run lime build linux -32
 
 after_build:
   - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin .
