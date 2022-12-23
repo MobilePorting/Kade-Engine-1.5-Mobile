@@ -1494,7 +1494,11 @@ class ChartingState extends MusicBeatState
 
 		if ((data != null) && (data.length > 0))
 		{
+                        #if mobile
+			SUtil.saveContent(Paths.formatToSongPath(_song.song), ".json", data.trim());
+                        #else
 			_file = new FileReference();
+                        #end
 			_file.addEventListener(Event.COMPLETE, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
