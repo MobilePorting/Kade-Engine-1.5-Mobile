@@ -37,9 +37,3 @@ build_script:
 after_build:
   - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin .
   - tar -cvf build-ubuntu18.04-32.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin32 .
-
-artifacts:
-- path: build-ubuntu18.04-64.tar
-  name: Build Ubuntu 18 64Bit
-- path: build-ubuntu18.04-32.tar
-  name: Build Ubuntu 18 32Bit
