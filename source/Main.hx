@@ -94,7 +94,7 @@ class Main extends Sprite
 
 		fpsCounter = new FpsAndMemoryCounter(10, 3, 0xFFFFFF);
 		var fpsCounterFormat = new TextFormat("_sans", 15, 0xFFFFFF, true);
-		fpsCounter.defaultTextFormat = fpsFormat;
+		fpsCounter.defaultTextFormat = fpsCounterFormat;
 		addChild(fpsCounter);
 	}
 
