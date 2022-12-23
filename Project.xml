@@ -126,7 +126,7 @@
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="linc_luajit" if="Lua"/>
         <haxelib name="extension-androidtools" if="android"/>
-        <haxelib name="extension-webm" unless="mobile"/>
+        <haxelib name="extension-webm" unless="mobile || linux"/>
         <haxelib name="extension-videoview" if="android"/>
 
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
