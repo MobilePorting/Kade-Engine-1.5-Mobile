@@ -1,4 +1,4 @@
-package openfl.display;
+package;
 
 import openfl.system.System;
 import flixel.math.FlxMath;
