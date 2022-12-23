@@ -7,7 +7,7 @@ environment:
 
 install:
   - cd /home/appveyor
-  - sudo -qq -y add-apt-repository ppa:haxe/releases
+  - sudo add-apt-repository -qq -y ppa:haxe/releases
   - sudo apt update -qq
   - DEBIAN_FRONTEND=noninteractive sudo apt install -y -qq -o=Dpkg::Use-Pty=0 neko tar gcc g++ gcc-multilib g++-multilib < /dev/null > /dev/null
   - wget -q https://github.com/HaxeFoundation/haxe/releases/download/4.1.5/haxe-4.1.5-linux64.tar.gz
