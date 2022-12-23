@@ -2,6 +2,8 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/mcagabe19/Kade-Engine-1.5-Android)
 
+Ubuntu 18 ![AppVeyor](https://img.shields.io/appveyor/build/mcagabe19/kade-engine-1-5-mobile) You Can [Download](https://ci.appveyor.com/project/mcagabe19/kade-engine-1.5-mobile/branch/master/artifacts) it!
+
 # Friday Night Funkin': Kade Engine
 ## Friday Night Funkin'
 **Friday Night Funkin'** is a rhythm game originally made for Ludum Dare 47 "Stuck In a Loop".
