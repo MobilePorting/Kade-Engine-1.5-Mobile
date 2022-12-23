@@ -35,5 +35,5 @@ build_script:
   - haxelib run lime build linux -32
 
 after_build:
-  - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin .
-  - tar -cvf build-ubuntu18.04-32.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin32 .
+  - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin64 .
+  - tar -cvf build-ubuntu18.04-32.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin .
