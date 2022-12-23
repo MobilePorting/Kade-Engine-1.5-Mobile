@@ -248,11 +248,11 @@ class KeyBindMenu extends FlxSubState
 
         if(shouldReturn){
             keys[curSelected] = r;
-            FlxG.sound.play(Paths.sound('Hover','clown'));
+            //FlxG.sound.play(Paths.sound('Hover','clown'));
         }
         else{
             keys[curSelected] = tempKey;
-            FlxG.sound.play(Paths.sound('confirm','clown'));
+            //FlxG.sound.play(Paths.sound('confirm','clown'));
             keyWarning.alpha = 1;
             warningTween.cancel();
             warningTween = FlxTween.tween(keyWarning, {alpha: 0}, 0.5, {ease: FlxEase.circOut, startDelay: 2});
