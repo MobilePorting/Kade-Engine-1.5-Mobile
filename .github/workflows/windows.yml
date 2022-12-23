@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         arch: [32, 64]
-        build: [release, debug]
+        build: [release]
         version: [2019, 2022]
     steps:
       - name: Checkout
