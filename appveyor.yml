@@ -29,8 +29,8 @@ install:
   - cd /home/appveyor/projects/kade-engine-1-5-mobile
 
 build_script:
-  #- haxelib run lime build linux -64 -D NO_PRECOMPILED_HEADERS -D no-compilation -D macro-times -D analyzer-optimize
-  #- mv /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin64
+  - haxelib run lime build linux -64 -D NO_PRECOMPILED_HEADERS -D no-compilation -D macro-times -D analyzer-optimize
+  - mv /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin64
   - haxelib run lime build linux -32 -D nolua -D no-compilation -D macro-times -D analyzer-optimize
 
 after_build:
