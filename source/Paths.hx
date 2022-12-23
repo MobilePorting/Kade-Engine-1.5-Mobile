@@ -209,9 +209,9 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-        inline static public function formatToSongPath(path:String) {
+        /*inline static public function formatToSongPath(path:String) {
 		return path.toLowerCase().replace(' ', '-');
-	}
+	}*/
 
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
