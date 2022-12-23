@@ -98,6 +98,16 @@ class ChartingState extends MusicBeatState
 
 	public var snapText:FlxText;
 
+        switch (PlayState.storyDifficulty)
+	{
+		case 0:
+			var difficulty:String = "easy";
+		case 1:
+			var difficulty:String = "normal";
+		case 2:
+			var difficulty:String = "hard";
+	}
+
 	override function create()
 	{
                 Paths.clearUnusedMemory();
@@ -1495,14 +1505,14 @@ class ChartingState extends MusicBeatState
 		if ((data != null) && (data.length > 0))
 		{
                         #if mobile
-			SUtil.saveContent(Paths.formatToSongPath(_song.song), ".json", data.trim());
+			SUtil.saveContent(_song.song.toLowerCase() + '-' + difficulty, ".json", data.trim());
                         #else
 			_file = new FileReference();
-                        #end
 			_file.addEventListener(Event.COMPLETE, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 			_file.save(data.trim(), _song.song.toLowerCase() + ".json");
+                        #end
 		}
 	}
 
