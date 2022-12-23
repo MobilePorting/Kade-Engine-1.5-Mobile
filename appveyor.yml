@@ -15,28 +15,34 @@ install:
   - tar -xf haxe-4.1.5-linux64.tar.gz -C $HAXE_INSTALLDIR
   - export PATH=$PATH:$HAXE_INSTALLDIR/haxe_20201231082044_5e33a78aa
   - mkdir $HAXELIB_ROOT && haxelib setup $HAXELIB_ROOT
-  - haxelib install hxcpp 4.2.1
-  - haxelib install lime 7.9.0
-  - haxelib install openfl 9.1.0
-  - haxelib install flixel 4.11.0
-  - haxelib install flixel-addons 2.11.0
-  - haxelib install flixel-ui 2.3.3
-  - haxelib install hscript 2.4.0
+  - haxelib install hxcpp 4.2.1 --quiet
+  - haxelib install lime 7.9.0 --quiet 
+  - haxelib install openfl 9.1.0 --quiet
+  - haxelib install flixel 4.11.0 --quiet
+  - haxelib install flixel-addons 2.11.0 --quiet
+  - haxelib install flixel-ui 2.3.3 --quiet
+  - haxelib install hscript 2.4.0 --quiet
   - haxelib git faxe https://github.com/uhrobots/faxe.git
   - haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
   - haxelib git extension-webm https://github.com/KadeDev/extension-webm.git
-  - haxelib run lime rebuild extension-webm linux
+  - haxelib run lime rebuild extension-webm linux -64
+  - haxelib run lime rebuild extension-webm linux -32
   - haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-  - haxelib install actuate 1.8.9
+  - haxelib install actuate 1.8.9 --quiet
   - haxelib list
   - cd /home/appveyor/projects/kade-engine-linux
 
 build_script:
-  - haxelib run lime build linux
+  - haxelib run lime build linux -64
+  - mv /home/appveyor/projects/kade-engine-linux/export/release/linux/bin /home/appveyor/projects/kade-engine-linux/export/release/linux/bin64
+  - haxelib run lime build linux -32 
 
 after_build:
-  - tar -cvf KadeEngine-Linux.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin .
+  - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin .
+  - tar -cvf build-ubuntu18.04-32.tar -C /home/appveyor/projects/kade-engine-linux/export/release/linux/bin32 .
 
 artifacts:
 - path: build-ubuntu18.04-64.tar
-  name: build-ubuntu18.04-64.tar
+  name: Build Ubuntu 18 64Bit
+- path: build-ubuntu18.04-32.tar
+  name: Build Ubuntu 18 32Bit
