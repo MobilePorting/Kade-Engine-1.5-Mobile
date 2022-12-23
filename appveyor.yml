@@ -16,7 +16,7 @@ install:
   - export PATH=$PATH:$HAXE_INSTALLDIR/haxe_20201231082044_5e33a78aa
   - mkdir $HAXELIB_ROOT && haxelib setup $HAXELIB_ROOT
   - haxelib install hxcpp 4.2.1 --quiet
-  - haxelib install lime 7.9.0 --quiet 
+  - haxelib install lime 7.9.0 --quiet
   - haxelib install openfl 9.1.0 --quiet
   - haxelib install flixel 4.11.0 --quiet
   - haxelib install flixel-addons 2.11.0 --quiet
@@ -26,7 +26,7 @@ install:
   - haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
   - haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
   - haxelib install actuate 1.8.9 --quiet
-  - haxelib list
+  - clear
   - cd /home/appveyor/projects/kade-engine-linux
 
 build_script:
