@@ -29,8 +29,6 @@ class Main extends Sprite
 
 	public static var watermarks = true; // Whether to put Kade Engine liteartly anywhere
 
-        public static var fps:FpsAndMemoryCounter;
-
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
 	public static function main():Void
@@ -94,10 +92,10 @@ class Main extends Sprite
 
 		addChild(game);
 
-		fps = new FpsAndMemoryCounter(10, 3, 0xFFFFFF);
-		var fpsFormat = new TextFormat("vcr.ttf", 15, 0xFFFFFF, true);
-		fps.defaultTextFormat = fpsFormat;
-		addChild(fps);
+		fpsCounter = new FpsAndMemoryCounter(10, 3, 0xFFFFFF);
+		var fpsCounterFormat = new TextFormat("_sans", 15, 0xFFFFFF, true);
+		fpsCounter.defaultTextFormat = fpsFormat;
+		addChild(fpsCounter);
 	}
 
 	var game:FlxGame;
