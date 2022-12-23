@@ -2,7 +2,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/mcagabe19/Kade-Engine-1.5-Android)
 
-Ubuntu 18 ![AppVeyor](https://img.shields.io/appveyor/build/mcagabe19/kade-engine-1-5-mobile) You Can [Download](https://ci.appveyor.com/project/mcagabe19/kade-engine-1.5-mobile/branch/master/artifacts) it!
+Ubuntu 18 ![AppVeyor](https://img.shields.io/appveyor/build/mcagabe19/kade-engine-1-5-ubuntu18-04) You Can [Download](https://ci.appveyor.com/project/mcagabe19/kade-engine-1-5-ubuntu18-04/branch/master/artifacts) it!
 
 # Friday Night Funkin': Kade Engine
 ## Friday Night Funkin'
