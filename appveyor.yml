@@ -26,16 +26,16 @@ install:
   - haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
   - haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
   - haxelib install actuate 1.8.9 --quiet
-  - cd /home/appveyor/projects/Kade-Engine-1.5-Mobile
+  - cd /home/appveyor/projects/kade-engine-1-5-mobile
 
 build_script:
   - haxelib run lime build linux -64
-  - mv /home/appveyor/projects/Kade-Engine-1.5-Mobile/export/release/linux/bin /home/appveyor/projects/Kade-Engine-1.5-Mobile/export/release/linux/bin64
+  - mv /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin64
   - haxelib run lime build linux -32
 
 after_build:
-  - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/Kade-Engine-1.5-Mobile/export/release/linux/bin64 .
-  - tar -cvf build-ubuntu18.04-32.tar -C /home/appveyor/projects/Kade-Engine-1.5-Mobile/export/release/linux/bin .
+  - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin64 .
+  - tar -cvf build-ubuntu18.04-32.tar -C /home/appveyor/projects/kade-engine-1-5-mobile/export/release/linux/bin .
 
 artifacts:
   - path: build-ubuntu18.04-32.tar
