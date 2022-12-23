@@ -44,3 +44,4 @@ arrifacts:
 
   - path: build-ubuntu18.04-64.tar
     name: Build Ubuntu18 64Bit
+    type: tar
