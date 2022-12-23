@@ -33,8 +33,6 @@ class FpsAndMemoryCounter extends TextField
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
 
-    public var fuckFps:Bool = false;
-
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
 		super();
