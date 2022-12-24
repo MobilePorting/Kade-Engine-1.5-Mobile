@@ -67,7 +67,6 @@ class FlxVirtualPad extends FlxSpriteGroup
 	public var buttonZ:FlxButton = new FlxButton(0, 0);
 	public var buttonP:FlxButton = new FlxButton(0, 0);
         public var buttonU:FlxButton = new FlxButton(0, 0);
-	public var buttonD:FlxButton = new FlxButton(0, 0);
 
 	/**
 	 * Create a gamepad.
