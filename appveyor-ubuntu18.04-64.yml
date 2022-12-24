@@ -32,7 +32,7 @@ build_script:
   - haxelib run lime build linux -64 -D NO_PRECOMPILED_HEADERS -D no-compilation -D macro-times -D analyzer-optimize
 
 after_build:
-  - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-1-5-ubuntu18-04-64/export/release/linux/bin64 .
+  - tar -cvf build-ubuntu18.04-64.tar -C /home/appveyor/projects/kade-engine-1-5-ubuntu18-04-64/export/release/linux/bin .
 
 artifacts:
   - path: build-ubuntu18.04-64.tar
