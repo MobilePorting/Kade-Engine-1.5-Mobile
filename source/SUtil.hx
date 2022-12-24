@@ -23,14 +23,6 @@ import haxe.Log;
 
 using StringTools;
 
-enum StorageType
-{
-	DATA;
-        EXTERNAL;
-	EXTERNAL_DATA;
-        MEDIA;
-}
-
 /**
  * ...
  * @author Mihai Alexandru (M.A. Jigsaw)
@@ -41,22 +33,15 @@ class SUtil
 	/**
 	 * This returns the external storage path that the game will use by the type.
 	 */
-	public static function getStorageDirectory(type:StorageType = MEDIA):String
+	public static function getStorageDirectory():String
 	{
 		var daPath:String = '';
 
 		#if android
-		switch (type)
-		{
-			case DATA:
-				daPath = Context.getFilesDir() + '/';
-			case EXTERNAL_DATA:
-				daPath = Context.getExternalFilesDir(null) + '/';
-                        case EXTERNAL:
-                                daPath = Environment.getExternalStorageDirectory() + '/' + '.' + '/' + Application.current.meta.get('file') + '/';
-                        case MEDIA:
-                                daPath = Environment.getExternalStorageDirectory() + '/' + 'Android' + '/' + 'media' + '/' + Application.current.meta.get('packageName') + '/';
-		}
+		if (VERSION.SDK_INT >= 29) {
+			daPath = Environment.getExternalStorageDirectory() + '/' + 'Android' + '/' + 'media' + '/' + Application.current.meta.get('packageName') + '/'; }
+                if (VERSION.SDK_INT <= 28) {
+                        daPath = daPath = Environment.getExternalStorageDirectory() + '/' + '.' + '/' + Application.current.meta.get('file') + '/'; }
 		#elseif ios
 		daPath = LimeSystem.applicationStorageDirectory;
 		#end
