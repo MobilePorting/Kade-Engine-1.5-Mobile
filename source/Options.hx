@@ -133,6 +133,27 @@ class MiddleScroll extends Option
 }
 
 
+class PauseMusic extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+	public override function press():Bool
+	{
+		FlxG.save.data.pauseMusic = !FlxG.save.data.pauseMusic;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Pause Music " + (!FlxG.save.data.pauseMusic ? "Enabled" : "Disabled");
+	}
+}
+
+
 class DFJKOption extends Option
 {
 	private var controls:Controls;
