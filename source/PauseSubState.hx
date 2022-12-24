@@ -24,8 +24,7 @@ class PauseSubState extends MusicBeatSubstate
 	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Charting Menu', 'Exit to menu'];
 	var curSelected:Int = 0;
 
-        if (FlxG.save.data.pauseMusic) {
-	var pauseMusic:FlxSound; }
+	var pauseMusic:FlxSound;
 	var perSongOffset:FlxText;
 	
 	var offsetChanged:Bool = false;
