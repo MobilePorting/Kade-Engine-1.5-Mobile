@@ -204,6 +204,10 @@ class ChartingState extends MusicBeatState
 		add(blackBorder);
 		add(snapText);
 
+                #if (mobileC || mobileCweb)
+                addVirtualPad(LEFT_FULL, A_B_C);
+                #end
+
 		super.create();
 	}
 
@@ -867,7 +871,7 @@ class ChartingState extends MusicBeatState
 				dummyArrow.y = Math.floor(FlxG.mouse.y / GRID_SIZE) * GRID_SIZE;
 		}
 
-		if (FlxG.keys.justPressed.ENTER)
+		if (#if (mobileC || mobileCweb) virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
 		{
 			lastSection = curSection;
 
@@ -922,12 +926,12 @@ class ChartingState extends MusicBeatState
 				shiftThing = 4;
 			if (!FlxG.keys.pressed.CONTROL)
 			{
-				if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+				if (#if (mobileC || mobileCweb) virtualPad.buttonRight.justPressed || #end FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
 					changeSection(curSection + shiftThing);
-				if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+				if (#if (mobileC || mobileCweb) virtualPad.buttonLeft.justPressed || #end FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
 					changeSection(curSection - shiftThing);
 			}	
-			if (FlxG.keys.justPressed.SPACE)
+			if (#if (mobileC || mobileCweb) virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE)
 			{
 				if (FlxG.sound.music.playing)
 				{
@@ -976,7 +980,7 @@ class ChartingState extends MusicBeatState
 
 			if (!FlxG.keys.pressed.SHIFT)
 			{
-				if (FlxG.keys.pressed.W || FlxG.keys.pressed.S)
+				if (#if (mobileC || mobileCweb) virtualPad.buttonUp.justPressed || virtualPad.buttonDown.justPressed || #end FlxG.keys.pressed.W || FlxG.keys.pressed.S)
 				{
 					FlxG.sound.music.pause();
 					vocals.pause();
@@ -984,7 +988,7 @@ class ChartingState extends MusicBeatState
 
 					var daTime:Float = 700 * FlxG.elapsed;
 
-					if (FlxG.keys.pressed.W)
+					if (#if (mobileC || mobileCweb) virtualPad.buttonUp.justPressed || #end FlxG.keys.pressed.W)
 					{
 						FlxG.sound.music.time -= daTime;
 					}
@@ -996,14 +1000,14 @@ class ChartingState extends MusicBeatState
 			}
 			else
 			{
-				if (FlxG.keys.justPressed.W || FlxG.keys.justPressed.S)
+				if (#if (mobileC || mobileCweb) virtualPad.buttonUp.justPressed || virtualPad.buttonDown.justPressed || #end FlxG.keys.justPressed.W || FlxG.keys.justPressed.S)
 				{
 					FlxG.sound.music.pause();
 					vocals.pause();
 
 					var daTime:Float = Conductor.stepCrochet * 2;
 
-					if (FlxG.keys.justPressed.W)
+					if (#if (mobileC || mobileCweb) virtualPad.buttonUp.justPressed || #end FlxG.keys.justPressed.W)
 					{
 						FlxG.sound.music.time -= daTime;
 					}
