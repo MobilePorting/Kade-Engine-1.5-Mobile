@@ -31,6 +31,7 @@ class OptionsMenu extends MusicBeatState
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
 			new FPSCapOption("Cap your FPS"),
+                        new PauseMusic("Enable/Disable Pause Music If You Want :)"),
 			new ScrollSpeedOption("Change your scroll speed (1 = Chart dependent)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
 			new ResetButtonOption("Toggle pressing R to gameover."),
