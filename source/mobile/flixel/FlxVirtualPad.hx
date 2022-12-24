@@ -29,6 +29,7 @@ enum FlxActionMode
 	A_B_C;
 	A_B_E;
 	A_B_X_Y;
+        A_B_X_Y_U_D;
 	A_B_C_X_Y;
 	A_B_C_X_Y_Z;
 	A_B_C_D_V_X_Y_Z;
@@ -65,6 +66,8 @@ class FlxVirtualPad extends FlxSpriteGroup
 	public var buttonY:FlxButton = new FlxButton(0, 0);
 	public var buttonZ:FlxButton = new FlxButton(0, 0);
 	public var buttonP:FlxButton = new FlxButton(0, 0);
+        public var buttonU:FlxButton = new FlxButton(0, 0);
+	public var buttonD:FlxButton = new FlxButton(0, 0);
 
 	/**
 	 * Create a gamepad.
@@ -132,6 +135,13 @@ class FlxVirtualPad extends FlxSpriteGroup
 				add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 'b', 0xFFCB00));
 				add(buttonY = createButton(FlxG.width - 384, FlxG.height - 135, 'y', 0x4A35B9));
 				add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a', 0xFF0000));
+                        case A_B_X_Y_U_D:
+                                add(buttonX = createButton(FlxG.width - 510, FlxG.height - 135, 'x', 0x99062D));
+				add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 'b', 0xFFCB00));
+				add(buttonY = createButton(FlxG.width - 384, FlxG.height - 135, 'y', 0x4A35B9));
+				add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a', 0xFF0000));
+                                add(buttonU = createButton(FlxG.width - 132, FlxG.height - 255, 'up', 0x00FF00));
+                                add(buttonD = createButton(FlxG.width - 384, FlxG.height - 135, 'down', 0x00FFFF));
 			case A_B_C_X_Y:
 				add(buttonC = createButton(FlxG.width - 384, FlxG.height - 135, 'c', 0x44FF00));
 				add(buttonX = createButton(FlxG.width - 258, FlxG.height - 255, 'x', 0x99062D));
@@ -188,6 +198,9 @@ class FlxVirtualPad extends FlxSpriteGroup
 		buttonX = null;
 		buttonY = null;
 		buttonZ = null;
+                buttonU = null;
+		buttonD = null;
+                buttonP = null;
 	}
 
 	private function createButton(X:Float, Y:Float, Graphic:String, Color:Int = 0xFFFFFF):FlxButton
