@@ -862,7 +862,7 @@ class ChartingState extends MusicBeatState
 				dummyArrow.y = Math.floor(FlxG.mouse.y / GRID_SIZE) * GRID_SIZE;
 		}
 
-                if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end #if android || FlxG.android.justReleased.BACK #end FlxG.keys.justPressed.ESCAPE)
+                if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.ESCAPE)
                 {
                         FlxG.sound.music.stop();
 			vocals.stop();
