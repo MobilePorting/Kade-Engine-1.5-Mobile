@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
-        version: [20.04, 22.04]
-        build: [release]
         arch: [arm64, armv7]
+        build: [release]
+        version: [20.04, 22.04]
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -73,9 +73,9 @@ jobs:
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
-        version: [20.04, 22.04]
-        build: [release]
         arch: [armv6, armv5]
+        build: [release]
+        version: [20.04, 22.04]
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -137,9 +137,9 @@ jobs:
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
-        version: [20.04, 22.04]
-        build: [release]
         arch: [32, 64]
+        build: [release]
+        version: [20.04, 22.04]
     steps:
       - name: Checkout
         uses: actions/checkout@main
