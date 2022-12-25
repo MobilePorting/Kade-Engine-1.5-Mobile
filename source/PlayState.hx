@@ -2444,8 +2444,9 @@ class PlayState extends MusicBeatState
 		#end
 
 		canPause = false;
-		FlxG.sound.music.volume = 0;
-		vocals.volume = 0;
+		FlxG.sound.music.stop();
+		vocals.stop();
+                FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 		if (SONG.validScore)
 		{
 			#if !switch
@@ -2455,7 +2456,7 @@ class PlayState extends MusicBeatState
 
 		if (offsetTesting)
 		{
-			FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			//FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			offsetTesting = false;
 			LoadingState.loadAndSwitchState(new OptionsMenu());
 			FlxG.save.data.offset = offsetTest;
@@ -2470,7 +2471,7 @@ class PlayState extends MusicBeatState
 
 				if (storyPlaylist.length <= 0)
 				{
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
+					//FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
 					transIn = FlxTransitionableState.defaultTransIn;
 					transOut = FlxTransitionableState.defaultTransOut;
