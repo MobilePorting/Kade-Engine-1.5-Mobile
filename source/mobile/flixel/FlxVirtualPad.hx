@@ -135,11 +135,11 @@ class FlxVirtualPad extends FlxSpriteGroup
 				add(buttonY = createButton(FlxG.width - 384, FlxG.height - 135, 'y', 0x4A35B9));
 				add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a', 0xFF0000));
                         case A_B_X_Y_U_D:
-                                add(buttonX = createButton(FlxG.width - 510, FlxG.height - 135, 'x', 0x99062D));
+                                add(buttonX = createButton(FlxG.width - 132, FlxG.height - 255, 'x', 0x99062D));
 				add(buttonB = createButton(FlxG.width - 258, FlxG.height - 135, 'b', 0xFFCB00));
-				add(buttonY = createButton(FlxG.width - 384, FlxG.height - 135, 'y', 0x4A35B9));
+				add(buttonY = createButton(FlxG.width - 258, FlxG.height - 255, 'y', 0x4A35B9));
 				add(buttonA = createButton(FlxG.width - 132, FlxG.height - 135, 'a', 0xFF0000));
-                                add(buttonU = createButton(FlxG.width - 132, FlxG.height - 255, 'up', 0x00FF00));
+                                add(buttonU = createButton(FlxG.width - 384, FlxG.height - 255, 'up', 0x00FF00));
                                 add(buttonD = createButton(FlxG.width - 384, FlxG.height - 135, 'down', 0x00FFFF));
 			case A_B_C_X_Y:
 				add(buttonC = createButton(FlxG.width - 384, FlxG.height - 135, 'c', 0x44FF00));
