@@ -3,14 +3,14 @@ name: Android Build CI (Fast)
 on: [workflow_dispatch]
 
 jobs:
-  build:
-    name: Build
+  build-armv7-and-arm64:
+    name: Build ARMV7 And ARM64
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
         version: [20.04, 22.04]
         build: [release]
-        arch: [arm64, armv7, 32]
+        arch: [arm64, armv7]
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -68,13 +68,14 @@ jobs:
         with:
           name: build-ubuntu${{ matrix.version }}-${{ matrix.arch }}-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/${{ matrix.build }}/*.apk'
-  build-armv6:
-    name: Build ArmV6
+  build-armv6-and-armv5:
+    name: Build ARMV6 And ARMV5
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
         version: [20.04, 22.04]
         build: [release]
+        arch: [armv6, armv5]
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -122,7 +123,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -armv6 -${{ matrix.build }} -D nolua -D no-compilation -D macro-times -D analyzer-optimize
+        run: haxelib run lime build android -${{ matrix.build }} -D nolua -D no-compilation -D macro-times -D analyzer-optimize -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
@@ -131,13 +132,14 @@ jobs:
         with:
           name: build-ubuntu${{ matrix.version }}-armv6-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/${{ matrix.build }}/*.apk'
-  build-8664:
-    name: Build X86_64
+  build-x86-and-x8664:
+    name: Build X86 And X86_64
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
         version: [20.04, 22.04]
         build: [release]
+        arch: [32, 64]
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -186,12 +188,12 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -64
+        run: haxelib run lime build android -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: build-ubuntu${{ matrix.version }}-64-${{ matrix.build }}
+          name: build-ubuntu${{ matrix.version }}-${{ matrix.arch }}-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/${{ matrix.build }}/*.apk'
