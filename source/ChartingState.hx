@@ -979,7 +979,7 @@ class ChartingState extends MusicBeatState
 
 			if (!FlxG.keys.pressed.SHIFT)
 			{
-				if (#if (mobileC || mobileCweb) virtualPad.buttonUp.justPressed || virtualPad.buttonDown.justPressed || #end FlxG.keys.pressed.W || FlxG.keys.pressed.S)
+				if (#if (mobileC || mobileCweb) virtualPad.buttonUp.pressed || virtualPad.buttonDown.pressed || #end FlxG.keys.pressed.W || FlxG.keys.pressed.S)
 				{
 					FlxG.sound.music.pause();
 					vocals.pause();
@@ -987,7 +987,7 @@ class ChartingState extends MusicBeatState
 
 					var daTime:Float = 700 * FlxG.elapsed;
 
-					if (#if (mobileC || mobileCweb) virtualPad.buttonUp.justPressed || #end FlxG.keys.pressed.W)
+					if (#if (mobileC || mobileCweb) virtualPad.buttonUp.pressed || #end FlxG.keys.pressed.W)
 					{
 						FlxG.sound.music.time -= daTime;
 					}
