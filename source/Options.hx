@@ -149,7 +149,7 @@ class PauseMusic extends Option
 
 	private override function updateDisplay():String
 	{
-		return "Pause Music " + (!FlxG.save.data.pauseMusic ? "Enabled" : "Disabled");
+		return "Pause Music " + (!FlxG.save.data.pauseMusic ? "Disabled" : "Enabled");
 	}
 }
 
