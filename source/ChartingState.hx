@@ -862,6 +862,14 @@ class ChartingState extends MusicBeatState
 				dummyArrow.y = Math.floor(FlxG.mouse.y / GRID_SIZE) * GRID_SIZE;
 		}
 
+                if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end #if android || FlxG.android.justReleased.BACK #end FlxG.keys.justPressed.ESCAPE)
+                {
+                        FlxG.sound.music.stop();
+			vocals.stop();
+                        FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
+			FlxG.switchState(new FreeplayState());
+                }
+
 		if (#if (mobileC || mobileCweb) virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
 		{
 			lastSection = curSection;
