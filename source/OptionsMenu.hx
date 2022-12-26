@@ -39,7 +39,8 @@ class OptionsMenu extends MusicBeatState
 		]),
 
                 new OptionCategory("Optimizations", [
-                        new PauseMusic("Enable/Disable Pause Music If You Want :)")
+                        new PauseMusic("Enable/Disable Pause Music If You Want :)"),
+                        new NoDieAnimation("Enable/Disable BF Die Animation (It's very useful for low rams)")
                 ]),
 
 		new OptionCategory("Appearance", [
