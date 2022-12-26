@@ -270,11 +270,23 @@ class Character extends FlxSprite
                                 if (!FlxG.save.data.noDieAnim)
                                 {
                                 var tex = Paths.getSparrowAtlas('characters/BOYFRIEND_DEAD');
+
+                                frames = tex;
+				animation.addByPrefix('firstDeath', "BF dies", 24, false);
+				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
+
+                                addOffset('firstDeath', 37, 11);
+				addOffset('deathLoop', 37, 5);
+				addOffset('deathConfirm', 37, 69);
+
+                                playAnim('firstDeath');
+
+				flipX = true;
                                 }
                                 else
                                 {
                                 var tex = Paths.getSparrowAtlas('characters/BOYFRIEND');
-                                }
 
 				frames = tex;
 				animation.addByPrefix('firstDeath', "BF dies", 24, false);
@@ -285,9 +297,10 @@ class Character extends FlxSprite
 				addOffset('deathLoop', 37, 5);
 				addOffset('deathConfirm', 37, 69);
 
-                                //playAnim('idle');
+                                playAnim('firstDeath');
 
 				flipX = true;
+                                }
 
 			case 'bf':
 				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND');
@@ -410,13 +423,8 @@ class Character extends FlxSprite
                                 if (!FlxG.save.data.noDieAnim)
                                 {
 				frames = Paths.getSparrowAtlas('characters/bfPixelsDEAD');
-                                }
-                                else
-                                {
-                                frames = Paths.getSparrowAtlas('characters/bfPixel');
-                                }
 
-				animation.addByPrefix('singUP', "BF Dies pixel", 24, false);
+                                animation.addByPrefix('singUP', "BF Dies pixel", 24, false);
 				animation.addByPrefix('firstDeath', "BF Dies pixel", 24, false);
 				animation.addByPrefix('deathLoop', "Retry Loop", 24, true);
 				animation.addByPrefix('deathConfirm', "RETRY CONFIRM", 24, false);
@@ -431,6 +439,27 @@ class Character extends FlxSprite
 				updateHitbox();
 				antialiasing = false;
 				flipX = true;
+                                }
+                                else
+                                {
+                                frames = Paths.getSparrowAtlas('characters/bfPixel');
+
+                                animation.addByPrefix('singUP', "BF Dies pixel", 24, false);
+				animation.addByPrefix('firstDeath', "BF Dies pixel", 24, false);
+				animation.addByPrefix('deathLoop', "Retry Loop", 24, true);
+				animation.addByPrefix('deathConfirm', "RETRY CONFIRM", 24, false);
+				animation.play('firstDeath');
+
+				addOffset('firstDeath');
+				addOffset('deathLoop', -37);
+				addOffset('deathConfirm', -37);
+				playAnim('firstDeath');
+				// pixel bullshit
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+				antialiasing = false;
+				flipX = true;
+                                }
 
 			case 'senpai':
 				frames = Paths.getSparrowAtlas('characters/senpai');
