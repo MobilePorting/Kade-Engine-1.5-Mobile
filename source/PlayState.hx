@@ -107,9 +107,13 @@ class PlayState extends MusicBeatState
 	private var vocals:FlxSound;
 
 	public static var dad:Character;
-        if (!FlxG.save.data.rmgf) {
+
+        if (!FlxG.save.data.rmgf)
+        {
 	public static var gf:Character;
-        private var gfSpeed:Int = 1; }
+        private var gfSpeed:Int = 1;
+        }
+
 	public static var boyfriend:Boyfriend;
 
 	public var notes:FlxTypedGroup<Note>;
