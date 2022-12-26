@@ -107,7 +107,8 @@ class PlayState extends MusicBeatState
 	private var vocals:FlxSound;
 
 	public static var dad:Character;
-	public static var gf:Character;
+        if (!FlxG.save.data.rmgf) {
+	public static var gf:Character; }
 	public static var boyfriend:Boyfriend;
 
 	public var notes:FlxTypedGroup<Note>;
@@ -823,7 +824,8 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 		}
 
-		add(gf);
+                if (!FlxG.save.data.rmgf) {
+		add(gf); }
 
 		// Shitty layering but whatev it works LOL
 		if (curStage == 'limo')
