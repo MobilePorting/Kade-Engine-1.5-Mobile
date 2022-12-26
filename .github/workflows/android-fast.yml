@@ -130,7 +130,7 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: build-ubuntu${{ matrix.version }}-armv6-${{ matrix.build }}
+          name: build-ubuntu${{ matrix.version }}-${{ matrix.arch }}-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/${{ matrix.build }}/*.apk'
   build-x86-and-x8664:
     name: Build
