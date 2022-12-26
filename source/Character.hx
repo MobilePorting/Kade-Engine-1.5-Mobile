@@ -176,7 +176,7 @@ class Character extends FlxSprite
 				addOffset('danceLeft', 0);
 				addOffset('danceRight', 0);
 
-				playAnim('danceRight')
+				playAnim('danceRight');
                                 }
                                 else
                                 {
