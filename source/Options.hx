@@ -194,7 +194,7 @@ class DFJKOption extends Option
 	}
 }
 
-class TheGFThing extends Option
+class TheGFThink extends Option
 {
 	public function new(desc:String)
 	{
