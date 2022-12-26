@@ -1053,8 +1053,13 @@ class PlayState extends MusicBeatState
 			rep = new Replay("na");
 
                 if (!FlxG.save.data.noDieAnim) {
-                Paths.returnGraphic(characters/bfPixelsDEAD);
-                Paths.returnGraphic(characters/BOYFRIEND_DEAD); }
+                    switch (SONG.player1) {
+                       case 'bf-pixel':
+                          Paths.returnGraphic('characters/bfPixelsDEAD');
+                       default:
+                          Paths.returnGraphic('characters/BOYFRIEND_DEAD');
+                       }
+                }
 
                 #if (mobileCweb || ios)
                 addVirtualPad(NONE, P);
