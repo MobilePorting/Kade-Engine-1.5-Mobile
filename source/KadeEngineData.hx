@@ -51,6 +51,9 @@ class KadeEngineData
 		if (FlxG.save.data.scrollSpeed == null)
 			FlxG.save.data.scrollSpeed = 1;
 
+                if (FlxG.save.data.rmgf == null)
+			FlxG.save.data.rmgf = false;
+
 		if (FlxG.save.data.npsDisplay == null)
 			FlxG.save.data.npsDisplay = false;
 
