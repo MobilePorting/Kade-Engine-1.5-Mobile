@@ -108,11 +108,8 @@ class PlayState extends MusicBeatState
 
 	public static var dad:Character;
 
-        if (!FlxG.save.data.rmgf)
-        {
 	public static var gf:Character;
         private var gfSpeed:Int = 1;
-        }
 
 	public static var boyfriend:Boyfriend;
 
