@@ -267,7 +267,15 @@ class Character extends FlxSprite
 				flipX = true;
 
                         case 'bf-dead':
+                                if (!FlxG.save.data.noDieAnim)
+                                {
                                 var tex = Paths.getSparrowAtlas('characters/BOYFRIEND_DEAD');
+                                }
+                                else
+                                {
+                                var tex = Paths.getSparrowAtlas('characters/BOYFRIEND');
+                                }
+
 				frames = tex;
 				animation.addByPrefix('firstDeath', "BF dies", 24, false);
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
@@ -399,7 +407,15 @@ class Character extends FlxSprite
 
 				flipX = true;
 			case 'bf-pixel-dead':
+                                if (!FlxG.save.data.noDieAnim)
+                                {
 				frames = Paths.getSparrowAtlas('characters/bfPixelsDEAD');
+                                }
+                                else
+                                {
+                                frames = Paths.getSparrowAtlas('characters/bfPixel');
+                                }
+
 				animation.addByPrefix('singUP', "BF Dies pixel", 24, false);
 				animation.addByPrefix('firstDeath', "BF Dies pixel", 24, false);
 				animation.addByPrefix('deathLoop', "Retry Loop", 24, true);
