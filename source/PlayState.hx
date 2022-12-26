@@ -108,7 +108,8 @@ class PlayState extends MusicBeatState
 
 	public static var dad:Character;
         if (!FlxG.save.data.rmgf) {
-	public static var gf:Character; }
+	public static var gf:Character;
+        private var gfSpeed:Int = 1; }
 	public static var boyfriend:Boyfriend;
 
 	public var notes:FlxTypedGroup<Note>;
@@ -128,7 +129,6 @@ class PlayState extends MusicBeatState
 	private var camZooming:Bool = false;
 	private var curSong:String = "";
 
-	private var gfSpeed:Int = 1;
 	public var health:Float = 1; //making public because sethealth doesnt work without it
 	private var combo:Int = 0;
 	public static var misses:Int = 0;
@@ -722,6 +722,7 @@ class PlayState extends MusicBeatState
 					add(stageCurtains);
 			}
 		}
+                if (!FlxG.save.data.rmgf) {
 		var gfVersion:String = 'gf';
 
 		switch (SONG.gfVersion)
@@ -737,7 +738,7 @@ class PlayState extends MusicBeatState
 		}
 
 		gf = new Character(400, 130, gfVersion);
-		gf.scrollFactor.set(0.95, 0.95);
+		gf.scrollFactor.set(0.95, 0.95); }
 
 		dad = new Character(100, 100, SONG.player2);
 
@@ -745,6 +746,7 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.player2)
 		{
+                        if (!FlxG.save.data.rmgf) {
 			case 'gf':
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
@@ -752,7 +754,7 @@ class PlayState extends MusicBeatState
 				{
 					camPos.x += 600;
 					tweenCamIn();
-				}
+				}}
 
 			case "spooky":
 				dad.y += 200;
@@ -805,8 +807,9 @@ class PlayState extends MusicBeatState
 			case 'school':
 				boyfriend.x += 200;
 				boyfriend.y += 220;
+                                if (!FlxG.save.data.rmgf) {
 				gf.x += 180;
-				gf.y += 300;
+				gf.y += 300; }
 			case 'schoolEvil':
 				if(FlxG.save.data.distractions){
 				// trailArea.scrollFactor.set();
@@ -820,8 +823,9 @@ class PlayState extends MusicBeatState
 
 				boyfriend.x += 200;
 				boyfriend.y += 220;
+                                if (!FlxG.save.data.rmgf) {
 				gf.x += 180;
-				gf.y += 300;
+				gf.y += 300; }
 		}
 
                 if (!FlxG.save.data.rmgf) {
@@ -1191,7 +1195,8 @@ class PlayState extends MusicBeatState
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{
 			dad.dance();
-			gf.dance();
+                        if (!FlxG.save.data.rmgf) {
+			gf.dance(); }
 			boyfriend.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
@@ -1945,6 +1950,7 @@ class PlayState extends MusicBeatState
 
 		if (generatedMusic && PlayState.SONG.notes[Std.int(curStep / 16)] != null)
 		{
+                        if (!FlxG.save.data.rmgf) {
 			// Make sure Girlfriend cheers only for certain songs
 			if(allowedToHeadbang)
 			{
@@ -2039,7 +2045,7 @@ class PlayState extends MusicBeatState
 						}
 					}
 				}
-			}
+			}}
 			
 			#if Lua
 			if (luaModchart != null)
@@ -2129,13 +2135,13 @@ class PlayState extends MusicBeatState
 			{
 				case 16:
 					camZooming = true;
-					gfSpeed = 2;
+					if(!FlxG.save.data.rmgf){gfSpeed = 2;}
 				case 48:
-					gfSpeed = 1;
+					if(!FlxG.save.data.rmgf){gfSpeed = 1;}
 				case 80:
-					gfSpeed = 2;
+					if(!FlxG.save.data.rmgf){gfSpeed = 2;}
 				case 112:
-					gfSpeed = 1;
+					if(!FlxG.save.data.rmgf){gfSpeed = 1;}
 				case 163:
 					// FlxG.sound.music.stop();
 					// FlxG.switchState(new TitleState());
@@ -3037,7 +3043,7 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.stunned)
 		{
 			health -= 0.04;
-			if (combo > 5 && gf.animOffsets.exists('sad'))
+			if (!FlxG.save.data.rmgf && combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('sad');
 			}
@@ -3298,7 +3304,7 @@ class PlayState extends MusicBeatState
 			if (trainSound.time >= 4700)
 				{
 					startedMoving = true;
-					gf.playAnim('hairBlow');
+					if(!FlxG.save.data.rmgf){gf.playAnim('hairBlow');}
 				}
 		
 				if (startedMoving)
@@ -3324,7 +3330,7 @@ class PlayState extends MusicBeatState
 	function trainReset():Void
 	{
 		if(FlxG.save.data.distractions){
-			gf.playAnim('hairFall');
+			if(!FlxG.save.data.rmgf){gf.playAnim('hairFall');}
 			phillyTrain.x = FlxG.width + 200;
 			trainMoving = false;
 			// trainSound.stop();
@@ -3344,7 +3350,7 @@ class PlayState extends MusicBeatState
 		lightningOffset = FlxG.random.int(8, 24);
 
 		boyfriend.playAnim('scared', true);
-		gf.playAnim('scared', true);
+		if(!FlxG.save.data.rmgf){gf.playAnim('scared', true);}
 	}
 
 	override function stepHit()
@@ -3402,7 +3408,7 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (curSong == 'Tutorial' && dad.curCharacter == 'gf') {
+		if (!FlxG.save.data.rmgf && curSong == 'Tutorial' && dad.curCharacter == 'gf') {
 			if (curBeat % 2 == 1 && dad.animOffsets.exists('danceLeft'))
 				dad.playAnim('danceLeft');
 			if (curBeat % 2 == 0 && dad.animOffsets.exists('danceRight'))
@@ -3445,7 +3451,7 @@ class PlayState extends MusicBeatState
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
-		if (curBeat % gfSpeed == 0)
+		if !FlxG.save.data.rmgf && curBeat % gfSpeed == 0)
 		{
 			gf.dance();
 		}
@@ -3465,11 +3471,18 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('hey', true);
 		}
 
+                if (!FlxG.save.data.rmgf) {
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 			{
 				boyfriend.playAnim('hey', true);
 				dad.playAnim('cheer', true);
 			}
+                else {
+                if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && curBeat > 16 && curBeat < 48)
+			{
+				boyfriend.playAnim('hey', true);
+			}
+                }
 
 		switch (curStage)
 		{
