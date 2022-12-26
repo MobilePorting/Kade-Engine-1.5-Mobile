@@ -132,7 +132,6 @@ class MiddleScroll extends Option
 	}
 }
 
-
 class PauseMusic extends Option
 {
 	public function new(desc:String)
@@ -149,10 +148,9 @@ class PauseMusic extends Option
 
 	private override function updateDisplay():String
 	{
-		return "Pause Music " + (!FlxG.save.data.pauseMusic ? "Disabled" : "Enabled");
+		return "Pause Music " + (!FlxG.save.data.pauseMusic ? "off" : "on");
 	}
 }
-
 
 class NoDieAnimation extends Option
 {
@@ -170,10 +168,9 @@ class NoDieAnimation extends Option
 
 	private override function updateDisplay():String
 	{
-		return "No Die Animation " + (!FlxG.save.data.noDieAnim ? "Disabled" : "Enabled");
+		return "No Die Animation " + (!FlxG.save.data.noDieAnim ? "off" : "on");
 	}
 }
-
 
 class DFJKOption extends Option
 {
@@ -194,6 +191,26 @@ class DFJKOption extends Option
 	private override function updateDisplay():String
 	{
 		return "Key Bindings";
+	}
+}
+
+class TheGFThing extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+	public override function press():Bool
+	{
+		FlxG.save.data.rmgf = !FlxG.save.data.rmgf;
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Remove Girlfriend " + (!FlxG.save.data.rmgf ? "off" : "on");
 	}
 }
 
