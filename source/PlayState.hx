@@ -1053,7 +1053,7 @@ class PlayState extends MusicBeatState
 			rep = new Replay("na");
 
                 if (!FlxG.save.data.noDieAnim) {
-                    switch (bf.curCharacter) {
+                    switch (SONG.player1) {
                        case 'bf-pixel':
                           Paths.returnGraphic(characters/bfPixelsDEAD);
                        default:
