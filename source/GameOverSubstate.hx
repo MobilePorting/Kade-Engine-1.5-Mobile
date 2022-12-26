@@ -25,15 +25,9 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			case 'bf-pixel':
 				stageSuffix = '-pixel';
-                                if (!FlxG.save.data.noDieAnim)
 				daBf = 'bf-pixel-dead';
-                                else
-                                daBf = 'bf-pixel';
 			default:
-                                if (!FlxG.save.data.noDieAnim)
 				daBf = 'bf-dead';
-                                else
-                                daBf = 'bf';
 		}
 
 		super();
