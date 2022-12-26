@@ -930,7 +930,7 @@ class ChartingState extends MusicBeatState
 				if (#if (mobileC || mobileCweb) virtualPad.buttonLeft.justPressed || #end FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
 					changeSection(curSection - shiftThing);
 			}	
-			if (#if (mobileC || mobileCweb) virtualPad.buttonY.justPressed || #end FlxG.keys.justPressed.SPACE)
+			if (#if (mobileC || mobileCweb) virtualPad.buttonX.justPressed || #end FlxG.keys.justPressed.SPACE)
 			{
 				if (FlxG.sound.music.playing)
 				{
@@ -945,7 +945,7 @@ class ChartingState extends MusicBeatState
 				}
 			}
 
-			if (#if (mobileC || mobileCweb) virtualPad.buttonX.justPressed || #end FlxG.keys.justPressed.R)
+			if (#if (mobileC || mobileCweb) virtualPad.buttonY.justPressed || #end FlxG.keys.justPressed.R)
 			{
 				if (FlxG.keys.pressed.SHIFT)
 					resetSection(true);
