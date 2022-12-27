@@ -19,6 +19,7 @@ jobs:
           haxe-version: 4.1.5
       - name: Install Haxelib
         run: |
+          DEBIAN_FRONTEND=noninteractive sudo apt-get install -y -qq -o=Dpkg::Use-Pty=0 gcc-multilib g++-multilib < /dev/null > /dev/null
           haxelib setup ~/haxelib
           haxelib install lime 7.9.0 --quiet
           haxelib git hxcpp https://github.com/mcagabe19/hxcpp-fastspeed.git
@@ -31,7 +32,7 @@ jobs:
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
       - name: Compile
-        run: haxelib run lime build Project.xml linux -32 -D mobileC -D nolua -${{ matrix.build }} -D no-compilation -D macro-times -D analyzer-optimize
+        run: haxelib run lime build Project.xml linux -32 -D nolua -${{ matrix.build }} -D no-compilation -D macro-times -D analyzer-optimize
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
@@ -66,7 +67,7 @@ jobs:
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
       - name: Compile
-        run: haxelib run lime build Project.xml linux -64 -D mobileC -D nolua -${{ matrix.build }} -D NO_PRECOMPILED_HEADERS -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
+        run: haxelib run lime build Project.xml linux -64 -D nolua -${{ matrix.build }} -D NO_PRECOMPILED_HEADERS -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize --app-version="4.0.0-${{ github.run_id}}"
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
