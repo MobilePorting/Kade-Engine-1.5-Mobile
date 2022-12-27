@@ -4,7 +4,7 @@ on: [workflow_dispatch]
 
 jobs:
   build-armv7-and-arm64:
-    name: Build
+    name: Android
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
@@ -69,7 +69,7 @@ jobs:
           name: build-ubuntu${{ matrix.version }}-${{ matrix.arch }}-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/${{ matrix.build }}/*.apk'
   build-armv6-and-armv5:
-    name: Build
+    name: Android
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
@@ -133,7 +133,7 @@ jobs:
           name: build-ubuntu${{ matrix.version }}-${{ matrix.arch }}-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/${{ matrix.build }}/*.apk'
   build-x86-and-x8664:
-    name: Build
+    name: Android
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
