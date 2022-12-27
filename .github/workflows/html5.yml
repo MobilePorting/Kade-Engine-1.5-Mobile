@@ -31,8 +31,7 @@ jobs:
           haxelib git faxe https://github.com/uhrobots/faxe.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
       - name: Compile
-        run: haxelib run lime build html5 -D nolua -D mobileCweb -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -${{ matrix.arch }}
-        env:
+        run: haxelib run lime build html5 -D nolua -D mobileCweb -${{ matrix.build }} -D no-compilation -D macro-times -D analyzer-optimize
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
@@ -67,8 +66,7 @@ jobs:
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
       - name: Compile
-        run: haxelib run lime build html5 -D nolua -D mobileCweb -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize -${{ matrix.arch }}
-        env:
+        run: haxelib run lime build html5 -D nolua -D mobileCweb -${{ matrix.build }} -D no-compilation -D macro-times -D analyzer-optimize
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
