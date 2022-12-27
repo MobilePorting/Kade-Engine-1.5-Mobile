@@ -1,4 +1,4 @@
-name: Android Build CI (Fast)
+name: HTML5 Build CI
 
 on: [workflow_dispatch]
 
