@@ -1,6 +1,6 @@
 package;
 
-#if mobileC
+#if (mobileC || mobileCweb)
 import mobile.flixel.FlxVirtualPad;
 #end
 import flixel.input.keyboard.FlxKey;
@@ -977,7 +977,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-                #if mobileC
+                #if (mobileC || mobileCweb)
                 addMobileControls();
                 #end
 
@@ -1166,7 +1166,7 @@ class PlayState extends MusicBeatState
 	{
 		inCutscene = false;
 
-                #if mobileC
+                #if (mobileC || mobileCweb)
                 mobileControls.visible = true;
                 #end
 
@@ -2429,7 +2429,7 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-	  #if mobileC
+	  #if (mobileC || mobileCweb)
 	  mobileControls.visible = false;
 	  #end
 
