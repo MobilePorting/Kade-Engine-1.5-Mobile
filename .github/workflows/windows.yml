@@ -38,7 +38,7 @@ jobs:
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
       - name: Compile
-        run: haxelib run lime build windows -${{ matrix.arch }} -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize
+        run: haxelib run lime build windows -D mobileC -${{ matrix.arch }} -${{ matrix.build }} -D no-compilation -D luajit_static -D macro-times -D analyzer-optimize
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
