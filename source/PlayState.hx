@@ -1055,9 +1055,9 @@ class PlayState extends MusicBeatState
                 if (!FlxG.save.data.noDieAnim) {
                     switch (SONG.player1) {
                        case 'bf-pixel':
-                          Paths.returnGraphic('characters/bfPixelsDEAD');
+                          Paths.returnGraphic('shared/images/characters/bfPixelsDEAD');
                        default:
-                          Paths.returnGraphic('characters/BOYFRIEND_DEAD');
+                          Paths.returnGraphic('shared/images/characters/BOYFRIEND_DEAD');
                        }
                 }
 
