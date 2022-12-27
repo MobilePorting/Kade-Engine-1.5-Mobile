@@ -70,5 +70,5 @@ jobs:
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: build-mac${{ matrix.version }}-${{ matrix.build }}
+          name: build-macos${{ matrix.version }}-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/html5/bin'
