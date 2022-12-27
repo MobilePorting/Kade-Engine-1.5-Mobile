@@ -35,7 +35,9 @@ enum abstract Action(String) to String from String
 	var ACCEPT = "accept";
 	var BACK = "back";
 	var PAUSE = "pause";
+        #if !web
 	var RESET = "reset";
+        #end
 	var CHEAT = "cheat";
 }
 #else
@@ -57,7 +59,9 @@ abstract Action(String) to String from String
 	var ACCEPT = "accept";
 	var BACK = "back";
 	var PAUSE = "pause";
+        #if !web
 	var RESET = "reset";
+        #end
 	var CHEAT = "cheat";
 }
 #end
@@ -73,6 +77,7 @@ enum Device
  * rebinding UI to list every action. ActionBinders are what the user percieves as
  * an input so, for instance, they can't set jump-press and jump-release to different keys.
  */
+#if !web
 enum Control
 {
 	UP;
@@ -85,6 +90,19 @@ enum Control
 	PAUSE;
 	CHEAT;
 }
+#else
+enum Control
+{
+	UP;
+	LEFT;
+	RIGHT;
+	DOWN;
+	ACCEPT;
+	BACK;
+	PAUSE;
+	CHEAT;
+}
+#end
 
 enum KeyboardScheme
 {
@@ -115,7 +133,9 @@ class Controls extends FlxActionSet
 	var _accept = new FlxActionDigital(Action.ACCEPT);
 	var _back = new FlxActionDigital(Action.BACK);
 	var _pause = new FlxActionDigital(Action.PAUSE);
+        #if !web
 	var _reset = new FlxActionDigital(Action.RESET);
+        #end
 	var _cheat = new FlxActionDigital(Action.CHEAT);
 
 	#if (haxe >= "4.0.0")
@@ -202,10 +222,12 @@ class Controls extends FlxActionSet
 	inline function get_PAUSE()
 		return _pause.check();
 
+        #if !web
 	public var RESET(get, never):Bool;
 
 	inline function get_RESET()
 		return _reset.check();
+        #end
 
 	public var CHEAT(get, never):Bool;
 
@@ -232,7 +254,9 @@ class Controls extends FlxActionSet
 		add(_accept);
 		add(_back);
 		add(_pause);
+                #if !web
 		add(_reset);
+                #end
 		add(_cheat);
 
 		for (action in digitalActions)
@@ -260,7 +284,9 @@ class Controls extends FlxActionSet
 		add(_accept);
 		add(_back);
 		add(_pause);
+                #if !web
 		add(_reset);
+                #end
 		add(_cheat);
 
 		for (action in digitalActions)
@@ -450,7 +476,9 @@ class Controls extends FlxActionSet
 			case ACCEPT: _accept;
 			case BACK: _back;
 			case PAUSE: _pause;
+                        #if !web
 			case RESET: _reset;
+                        #end
 			case CHEAT: _cheat;
 		}
 	}
@@ -493,8 +521,10 @@ class Controls extends FlxActionSet
 				func(_back, JUST_PRESSED);
 			case PAUSE:
 				func(_pause, JUST_PRESSED);
+                        #if !web
 			case RESET:
 				func(_reset, JUST_PRESSED);
+                        #end
 			case CHEAT:
 				func(_cheat, JUST_PRESSED);
 		}
@@ -631,9 +661,7 @@ class Controls extends FlxActionSet
 
 	public function setKeyboardScheme(scheme:KeyboardScheme, reset = true)
 	{
-                #if not html5
 		loadKeyBinds();
-                #end
 		/*if (reset)
 			removeKeyboard();
 		keyboardScheme = scheme;
@@ -649,7 +677,9 @@ class Controls extends FlxActionSet
 				inline bindKeys(Control.ACCEPT, [Z, SPACE, ENTER]);
 				inline bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
 				inline bindKeys(Control.PAUSE, [P, ENTER, ESCAPE]);
+                                #if !web
 				inline bindKeys(Control.RESET, [FlxKey.fromString("R")]);
+                                #end
 			case Duo(true):
 				inline bindKeys(Control.UP, [W, K]);
 				inline bindKeys(Control.DOWN, [S, J]);
@@ -658,7 +688,9 @@ class Controls extends FlxActionSet
 				inline bindKeys(Control.ACCEPT, [Z]);
 				inline bindKeys(Control.BACK, [X]);
 				inline bindKeys(Control.PAUSE, [ONE]);
+                                #if !web
 				inline bindKeys(Control.RESET, [R]);
+                                #end
 			case Duo(false):
 				inline bindKeys(Control.UP, [FlxKey.UP]);
 				inline bindKeys(Control.DOWN, [FlxKey.DOWN]);
@@ -667,7 +699,9 @@ class Controls extends FlxActionSet
 				inline bindKeys(Control.ACCEPT, [O]);
 				inline bindKeys(Control.BACK, [P]);
 				inline bindKeys(Control.PAUSE, [ENTER]);
+                                #if !web
 				inline bindKeys(Control.RESET, [BACKSPACE]);
+                                #if !web
 			case None: // nothing
 			case Custom: // nothing
 		}
@@ -682,7 +716,7 @@ class Controls extends FlxActionSet
 				bindKeys(Control.ACCEPT, [Z, SPACE, ENTER]);
 				bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
 				bindKeys(Control.PAUSE, [P, ENTER, ESCAPE]);
-				bindKeys(Control.RESET, [R]);
+				#if !web bindKeys(Control.RESET, [R]); #end
 			case Duo(true):
 				bindKeys(Control.UP, [W, K]);
 				bindKeys(Control.DOWN, [S, J]);
@@ -691,7 +725,7 @@ class Controls extends FlxActionSet
 				bindKeys(Control.ACCEPT, [Z]);
 				bindKeys(Control.BACK, [X]);
 				bindKeys(Control.PAUSE, [ONE]);
-				bindKeys(Control.RESET, [R]);
+				#if !web bindKeys(Control.RESET, [R]); #end
 			case Duo(false):
 				bindKeys(Control.UP, [FlxKey.UP]);
 				bindKeys(Control.DOWN, [FlxKey.DOWN]);
@@ -700,7 +734,7 @@ class Controls extends FlxActionSet
 				bindKeys(Control.ACCEPT, [O]);
 				bindKeys(Control.BACK, [P]);
 				bindKeys(Control.PAUSE, [ENTER]);
-				bindKeys(Control.RESET, [BACKSPACE]);
+				#if !web bindKeys(Control.RESET, [BACKSPACE]); #end
 			case None: // nothing
 			case Custom: // nothing
 		}
@@ -736,7 +770,9 @@ class Controls extends FlxActionSet
 		inline bindKeys(Control.ACCEPT, [Z, SPACE, ENTER]);
 		inline bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
 		inline bindKeys(Control.PAUSE, [P, ENTER, ESCAPE]);
+                #if !web
 		inline bindKeys(Control.RESET, [FlxKey.fromString(FlxG.save.data.killBind)]);
+                #end
 	}
 
 	function removeKeyboard()
@@ -809,7 +845,7 @@ class Controls extends FlxActionSet
 			Control.LEFT => [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT],
 			Control.RIGHT => [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT],
 			Control.PAUSE => [START],
-			Control.RESET => [Y]
+			#if !web Control.RESET => [Y] #end
 		]);
 		#else
 		addGamepadLiteral(id, [
@@ -822,7 +858,7 @@ class Controls extends FlxActionSet
 			Control.RIGHT => [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT, RIGHT_STICK_DIGITAL_RIGHT],
 			Control.PAUSE => [START],
 			//Swap Y and X for switch
-			Control.RESET => [Y],
+			#if !web Control.RESET => [Y], #end
 			Control.CHEAT => [X]
 		]);
 		#end
