@@ -977,7 +977,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
-                #if mobile
+                #if mobileC
                 addMobileControls();
                 #end
 
