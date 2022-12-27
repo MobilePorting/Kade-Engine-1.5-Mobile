@@ -1,6 +1,6 @@
 package;
 
-#if mobile
+#if mobileC
 import mobile.flixel.FlxVirtualPad;
 #end
 import flixel.input.keyboard.FlxKey;
