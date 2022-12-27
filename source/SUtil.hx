@@ -167,6 +167,7 @@ class SUtil
 		LimeSystem.exit(1);
 	}
 
+        #if sys
 	/**
 	 * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
 	 */
@@ -195,9 +196,8 @@ class SUtil
 					FileSystem.createDirectory(total);
 			}
 		}
-	}
+        }
 
-	#if sys
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json',
 			fileData:String = 'you forgot to add something in your code lol'):Void
 	{
