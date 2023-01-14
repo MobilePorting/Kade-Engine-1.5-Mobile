@@ -172,6 +172,7 @@
 	<!--Garbage Collector Stuff (Maybe)-->
         <haxedef name="HXCPP_GC_SUMMARY" if="debug" />
         <haxedef name="HXCPP_GC_DYNAMIC_SIZE" if="debug" />
+        <haxedef name="HXCPP_GC_MOVING" />
         <haxedef name="HXCPP_GC_GENERATIONAL" />
 	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
