@@ -169,13 +169,6 @@
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-	<!--Garbage Collector Stuff (Maybe)-->
-        <haxedef name="HXCPP_GC_SUMMARY" if="debug" />
-        <haxedef name="HXCPP_GC_DYNAMIC_SIZE" if="debug" />
-        <haxedef name="HXCPP_GC_MOVING" />
-        <haxedef name="HXCPP_GC_GENERATIONAL" />
-	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
-
 	<!--Always enable Null Object Reference check-->
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />
@@ -186,7 +179,7 @@
                 <certificate path="key.keystore" password="123456" alias="kade" alias-password="123456" unless="debug"/>
 
                 <!--Audio Recording Fix (if you are hxcodec user disable this option)-->
-                <!-- <config:android target-sdk-version="29" /> -->
+                <config:android target-sdk-version="29" />
 
 		<!--Permissions-->
 		<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
