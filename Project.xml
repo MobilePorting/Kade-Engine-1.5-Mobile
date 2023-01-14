@@ -169,7 +169,10 @@
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-	<!--Allow working memory greater than 1 Gig-->
+	<!--Garbage Collector Stuff (Maybe)-->
+        <haxedef name="HXCPP_GC_SUMMARY" if="debug" />
+        <haxedef name="HXCPP_GC_DYNAMIC_SIZE" if="debug" />
+        <haxedef name="HXCPP_GC_GENERATIONAL" />
 	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
 	<!--Always enable Null Object Reference check-->
