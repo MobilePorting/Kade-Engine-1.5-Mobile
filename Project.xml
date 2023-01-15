@@ -121,8 +121,8 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<!-- <haxelib name="newgrounds"/> -->
-	<haxelib name="faxe" if='switch'/>
-	<haxelib name="polymod"/>
+	<!-- <haxelib name="faxe" if='switch'/> -->
+	<haxelib name="polymod" unless="mobile"/>
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="linc_luajit" if="Lua"/>
         <haxelib name="extension-androidtools" if="android"/>
