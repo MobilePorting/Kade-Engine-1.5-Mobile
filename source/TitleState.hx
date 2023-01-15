@@ -64,7 +64,7 @@ class TitleState extends MusicBeatState
 		if (!sys.FileSystem.exists(SUtil.getStorageDirectory() + "/replays"))
 			sys.FileSystem.createDirectory(SUtil.getStorageDirectory() + "/replays");
                 #end
-                #if !web
+                #if desktop
                 if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
                 #end
