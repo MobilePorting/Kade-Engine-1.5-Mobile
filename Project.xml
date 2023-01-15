@@ -47,10 +47,8 @@
 
         <assets path="mobile" rename="assets/mobile" if="mobileC || mobileCweb" />
 
-        <assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
+	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>
-        <assets path="assets/songs" exclude="*.ogg" if="web"/>
-	<assets path="assets/songs" exclude="*.mp3" unless="web"/>
 	
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
@@ -171,12 +169,12 @@
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-        <!--Garbage Collector Stuff (Maybe)-->
+	<!--Garbage Collector Stuff (Maybe)-->
         <haxedef name="HXCPP_GC_SUMMARY" if="debug" />
         <haxedef name="HXCPP_GC_DYNAMIC_SIZE" if="debug" />
         <haxedef name="HXCPP_GC_MOVING" />
         <haxedef name="HXCPP_GC_GENERATIONAL" />
-	<haxedef name="HXCPP_GC_BIG_BLOCKS" />
+        <haxedef name="HXCPP_GC_BIG_BLOCKS" />
 
 	<!--Always enable Null Object Reference check-->
 	<haxedef name="HXCPP_CHECK_POINTER" />
