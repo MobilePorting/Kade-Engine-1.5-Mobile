@@ -32,8 +32,6 @@ jobs:
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
           haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
-          haxelib git extension-webm https://github.com/kadedev/extension-webm.git
-          haxelib run lime rebuild extension-webm windows
           haxelib set openfl 9.1.0
           haxelib set lime 7.9.0
       - name: Compile
