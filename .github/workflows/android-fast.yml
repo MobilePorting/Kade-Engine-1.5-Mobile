@@ -67,12 +67,12 @@ jobs:
         with:
           name: build-ubuntu${{ matrix.version }}-${{ matrix.arch }}-${{ matrix.build }}
           path: 'export/${{ matrix.build }}/android/bin/app/build/outputs/apk/${{ matrix.build }}/*.apk'
-  build-armv6-and-armv5:
+  build-armv6:
     name: Android
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
-        arch: [armv6, armv5]
+        arch: [armv6]
         build: [release]
         version: [20.04, 22.04]
     steps:
