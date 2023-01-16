@@ -93,9 +93,10 @@ class Main extends Sprite
 		addChild(game);
 
 		fpsCounter = new FpsAndMemoryCounter(10, 3, 0xFFFFFF);
-		var fpsCounterFormat = new TextFormat("_sans", 15, 0xFFFFFF, true);
-		fpsCounter.defaultTextFormat = fpsCounterFormat;
+		// var fpsCounterFormat = new TextFormat("vcr.ttf", 15, 0xFFFFFF, true);
+		// fpsCounter.defaultTextFormat = fpsCounterFormat;
 		addChild(fpsCounter);
+                toggleFPS(FlxG.save.data.fps);
 	}
 
 	var game:FlxGame;
