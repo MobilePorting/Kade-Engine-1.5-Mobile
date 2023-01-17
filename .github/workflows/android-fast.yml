@@ -1,4 +1,4 @@
-name: Android Build CI (Fast Compile)
+name: Android Build CI (Fast)
 
 on: [workflow_dispatch] 
 
@@ -42,7 +42,6 @@ jobs:
           haxelib install hscript 2.4.0 --quiet
           haxelib install flixel-addons 2.10.0 --quiet
           haxelib git linc_luajit https://github.com/sirox228/linc_luajit.git
-          # haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib git extension-videoview https://github.com/MAJigsaw77/extension-videoview.git
           haxelib set openfl 9.1.0
@@ -57,7 +56,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D android-neon=true -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
+        run: haxelib run lime build android -Dno-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
@@ -104,7 +103,6 @@ jobs:
           haxelib install flixel-ui 2.3.3 --quiet
           haxelib install hscript 2.4.0 --quiet
           haxelib install flixel-addons 2.10.0 --quiet
-          # haxelib git polymod https://github.com/mcagabe19/polymod-for-steve.git
           haxelib git extension-androidtools https://github.com/MAJigsaw77/extension-androidtools.git
           haxelib git extension-videoview https://github.com/MAJigsaw77/extension-videoview.git
           haxelib set openfl 9.1.0
@@ -119,7 +117,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D android-neon=true -D nolua -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
+        run: haxelib run lime build android -Dno-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D nolua -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
@@ -182,7 +180,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
+        run: haxelib run lime build android -Dno-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
