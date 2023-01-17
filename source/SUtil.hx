@@ -100,9 +100,11 @@ class SUtil
 		#end
 
 		#if mobile
-		if (!sys.FileSystem.exists(SUtil.getStorageDirectory())){
+		if (!sys.FileSystem.exists(SUtil.getStorageDirectory()))
+		{
 			Lib.application.window.alert('Please create folder to\n' + SUtil.getStorageDirectory() + '\nPress Ok to close the app', 'Error!');
-		LimeSystem.exit(1);}
+			LimeSystem.exit(1);
+		}
 		#end
 	}
 
