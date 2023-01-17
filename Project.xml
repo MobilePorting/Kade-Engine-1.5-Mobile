@@ -215,23 +215,4 @@
 
 	<!-- <haxedef name="SKIP_TO_PLAYSTATE" if="debug" /> -->
 	<haxedef name="NG_LOGIN" if="newgrounds" />
-
-        <!-- _________________________________ HaxeFlags _______________________________ -->
-
-        <haxeflag name="-D unsafe" if="fastgame"/>
-        <haxeflag name="-D no-slow-math" if="fastgame"/>
-        <haxeflag name="-D no-inline-calls" if="fastgame"/>
-        <haxeflag name="-D no-debug" if="fastgame"/>
-        <haxeflag name="-D no-inline-cache" if="fastgame"/>
-        <haxeflag name="-D no-assert" if="fastgame"/>
-        <haxeflag name="-D no-dce" if="fastgame"/>
-        <haxeflag name="-D no-opt" if="fastgame"/>
-        <haxeflag name="-D no-compilation" if="classicflags"/>
-        <haxeflag name="-D macro-times" if="classicflags"/>
-        <haxeflag name="-D analyzer-optimize" if="classicflags"/>
-        <haxeflag name="-D android-neon=true" if="HXCPP_ARMV7 || HXCPP_ARM64"/>
-        <haxeflag name="-D android-disable-debug=true" if="classicflags"/>
-        <!-- <haxeflag name="-D org.gradle.jvmargs=-Xmx4g" if="classicflags"/> -->
-        <haxeflag name="-D android-stl=libc++" if="classicflags"/>
-
 </project>
