@@ -43,7 +43,7 @@ class FpsAndMemoryCounter extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("robotoserif120pt.ttf", 12, color);
+		defaultTextFormat = new TextFormat("robotoserif120pt.ttf", 15, color);
 		text = "FPS: ";
 
 		cacheCount = 0;
