@@ -215,5 +215,23 @@
 
 	<!-- <haxedef name="SKIP_TO_PLAYSTATE" if="debug" /> -->
 	<haxedef name="NG_LOGIN" if="newgrounds" />
-	
+
+        <!-- _________________________________ HaxeFlags _______________________________ -->
+
+        <haxeflag name="-Dunsafe" if="fastgame"/>
+        <haxeflag name="-Dno-slow-math" if="fastgame"/>
+        <haxeflag name="-Dno-inline-calls" if="fastgame"/>
+        <haxeflag name="-Dno-debug" if="fastgame"/>
+        <haxeflag name="-Dno-inline-cache" if="fastgame"/>
+        <haxeflag name="-Dno-assert" if="fastgame"/>
+        <haxeflag name="-Dno-dce" if="fastgame"/>
+        <haxeflag name="-Dno-opt" if="fastgame"/>
+        <haxeflag name="-Dno-compilation" if="classicflags"/>
+        <haxeflag name="-Dmacro-times" if="classicflags"/>
+        <haxeflag name="-Danalyzer-optimize" if="classicflags"/>
+        <haxeflag name="-Dandroid-neon=true" if="HXCPP_ARMV7 || HXCPP_ARM64"/>
+        <haxeflag name="-Dandroid-disable-debug=true" if="classicflags"/>
+        <!-- <haxeflag name="-Dorg.gradle.jvmargs=-Xmx4g" if="classicflags"/> -->
+        <haxeflag name="-Dandroid-stl=libc++" if="classicflags"/>
+
 </project>
