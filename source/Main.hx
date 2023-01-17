@@ -19,11 +19,13 @@ class Main extends Sprite
 	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var initialState:Class<FlxState> = TitleState; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
+
 	#if web
-        public static var framerate:Int = 120; // How many frames per second the game should run at.
-        #else
-        public static var framerate:Int = 60; // How many frames per second the game should run at.
-        #end
+	public static var framerate:Int = 120; // How many frames per second the game should run at.
+	#else
+	public static var framerate:Int = 60; // How many frames per second the game should run at.
+
+	#end
 	var skipSplash:Bool = false; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
@@ -33,20 +35,20 @@ class Main extends Sprite
 
 	public static function main():Void
 	{
-		// quick checks 
+		// quick checks
 
 		Lib.current.addChild(new Main());
-                #if cpp
-                cpp.NativeGc.enable(true);
-                cpp.NativeGc.run(true);
-                #end
+		#if cpp
+		cpp.NativeGc.enable(true);
+		cpp.NativeGc.run(true);
+		#end
 	}
 
 	public function new()
 	{
 		super();
 
-                SUtil.uncaughtErrorHandler();
+		SUtil.uncaughtErrorHandler();
 
 		if (stage != null)
 		{
@@ -86,7 +88,7 @@ class Main extends Sprite
 		initialState = TitleState;
 		#end
 
-                SUtil.checkPermissions();
+		SUtil.checkPermissions();
 
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
 
@@ -96,14 +98,15 @@ class Main extends Sprite
 		// var fpsCounterFormat = new TextFormat("vcr.ttf", 15, 0xFFFFFF, true);
 		// fpsCounter.defaultTextFormat = fpsCounterFormat;
 		addChild(fpsCounter);
-                toggleFPS(FlxG.save.data.fps);
+		toggleFPS(FlxG.save.data.fps);
 	}
 
 	var game:FlxGame;
 
 	var fpsCounter:FpsAndMemoryCounter;
 
-	public function toggleFPS(fpsEnabled:Bool):Void {
+	public function toggleFPS(fpsEnabled:Bool):Void
+	{
 		fpsCounter.visible = fpsEnabled;
 	}
 

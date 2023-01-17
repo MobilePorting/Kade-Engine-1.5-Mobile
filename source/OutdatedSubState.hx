@@ -16,13 +16,8 @@ class OutdatedSubState extends MusicBeatState
 
 	public static var needVer:String = "IDFK LOL";
 	public static var currChanges:String = "dk";
-	
-	private var bgColors:Array<String> = [
-		'#314d7f',
-		'#4e7093',
-		'#70526e',
-		'#594465'
-	];
+
+	private var bgColors:Array<String> = ['#314d7f', '#4e7093', '#70526e', '#594465'];
 	private var colorRotation:Int = 1;
 
 	override function create()
@@ -33,7 +28,7 @@ class OutdatedSubState extends MusicBeatState
 		bg.scale.y *= 1.55;
 		bg.screenCenter();
 		add(bg);
-		
+
 		var kadeLogo:FlxSprite = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('KadeEngineLogo'));
 		kadeLogo.scale.y = 0.3;
 		kadeLogo.scale.x = 0.3;
@@ -41,68 +36,71 @@ class OutdatedSubState extends MusicBeatState
 		kadeLogo.y -= 180;
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
-		
+
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-                        #if mobile
-                        "Your Kade Engine is outdated!\nYou are on "
-			+ MainMenuState.kadeEngineVer
-			+ "\nBeacuse this is old port lmfao"
-			+ "\n\nTouch Your Screen To Contiune",
-                        32);
-                        #end
-                        #if mobileCweb
+			#if mobile
 			"Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
 			+ "\nBeacuse this is old port lmfao"
-			+ "\n\nPress ENTER or Touch Your Screen to Contiune",
-			32);
-                        #end
-                        #if desktop
-                        "Your Kade Engine is outdated!\nYou are on "
+			+ "\n\nTouch Your Screen To Contiune", 32);
+			#end
+			#if mobileCweb
+			"Your Kade Engine is outdated!\nYou are on "
 			+ MainMenuState.kadeEngineVer
 			+ "\nBeacuse this is old port lmfao"
-			+ "\n\nPress ENTER to Contiune",
-			32);
-                        #end
-		
-		txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
-		txt.borderColor = FlxColor.BLACK;
-		txt.borderSize = 3;
-		txt.borderStyle = FlxTextBorderStyle.OUTLINE;
-		txt.screenCenter();
-		add(txt);
-		
-		FlxTween.color(bg, 2, bg.color, FlxColor.fromString(bgColors[colorRotation]));
-		FlxTween.angle(kadeLogo, kadeLogo.angle, -10, 2, {ease: FlxEase.quartInOut});
-		
-		new FlxTimer().start(2, function(tmr:FlxTimer)
-		{
+			+ "\n\nPress ENTER or Touch Your Screen to Contiune", 32);
+			#end
+			#if desktop
+			"Your Kade Engine is outdated!\nYou are on "
+			+ MainMenuState.kadeEngineVer
+			+ "\nBeacuse this is old port lmfao"
+			+ "\n\nPress ENTER to Contiune", 32);
+			#end
+
+			txt.setFormat("VCR OSD Mono", 32, FlxColor.fromRGB(200, 200, 200), CENTER);
+			txt.borderColor = FlxColor.BLACK;
+			txt.borderSize = 3;
+			txt.borderStyle = FlxTextBorderStyle.OUTLINE;
+			txt.screenCenter();
+			add(txt);
+
 			FlxTween.color(bg, 2, bg.color, FlxColor.fromString(bgColors[colorRotation]));
-			if(colorRotation < (bgColors.length - 1)) colorRotation++;
-			else colorRotation = 0;
-		}, 0);
-		
-		new FlxTimer().start(2, function(tmr:FlxTimer)
-		{
-			if(kadeLogo.angle == -10) FlxTween.angle(kadeLogo, kadeLogo.angle, 10, 2, {ease: FlxEase.quartInOut});
-			else FlxTween.angle(kadeLogo, kadeLogo.angle, -10, 2, {ease: FlxEase.quartInOut});
-		}, 0);
-		
-		new FlxTimer().start(0.8, function(tmr:FlxTimer)
-		{
-			if(kadeLogo.alpha == 0.8) FlxTween.tween(kadeLogo, {alpha: 1}, 0.8, {ease: FlxEase.quartInOut});
-			else FlxTween.tween(kadeLogo, {alpha: 0.8}, 0.8, {ease: FlxEase.quartInOut});
-		}, 0);
+			FlxTween.angle(kadeLogo, kadeLogo.angle, -10, 2, {ease: FlxEase.quartInOut});
+
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+			{
+				FlxTween.color(bg, 2, bg.color, FlxColor.fromString(bgColors[colorRotation]));
+				if (colorRotation < (bgColors.length - 1))
+					colorRotation++;
+				else
+					colorRotation = 0;
+			}, 0);
+
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+			{
+				if (kadeLogo.angle == -10)
+					FlxTween.angle(kadeLogo, kadeLogo.angle, 10, 2, {ease: FlxEase.quartInOut});
+				else
+					FlxTween.angle(kadeLogo, kadeLogo.angle, -10, 2, {ease: FlxEase.quartInOut});
+			}, 0);
+
+			new FlxTimer().start(0.8, function(tmr:FlxTimer)
+			{
+				if (kadeLogo.alpha == 0.8)
+					FlxTween.tween(kadeLogo, {alpha: 1}, 0.8, {ease: FlxEase.quartInOut});
+				else
+					FlxTween.tween(kadeLogo, {alpha: 0.8}, 0.8, {ease: FlxEase.quartInOut});
+			}, 0);
 	}
 
 	override function update(elapsed:Float)
 	{
-                for (touch in FlxG.touches.list)
-                if (controls.ACCEPT || touch.justPressed)
-		{
-			leftState = true;
-			FlxG.switchState(new MainMenuState());
-		}
+		for (touch in FlxG.touches.list)
+			if (controls.ACCEPT || touch.justPressed)
+			{
+				leftState = true;
+				FlxG.switchState(new MainMenuState());
+			}
 		super.update(elapsed);
 	}
 }

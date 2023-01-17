@@ -26,9 +26,9 @@ using StringTools;
 enum StorageType
 {
 	DATA;
-        EXTERNAL;
+	EXTERNAL;
 	EXTERNAL_DATA;
-        MEDIA;
+	MEDIA;
 }
 
 /**
@@ -52,10 +52,17 @@ class SUtil
 				daPath = Context.getFilesDir() + '/';
 			case EXTERNAL_DATA:
 				daPath = Context.getExternalFilesDir(null) + '/';
-                        case EXTERNAL:
-                                daPath = Environment.getExternalStorageDirectory() + '/' + '.' + '/' + Application.current.meta.get('file') + '/';
-                        case MEDIA:
-                                daPath = Environment.getExternalStorageDirectory() + '/' + 'Android' + '/' + 'media' + '/' + Application.current.meta.get('packageName') + '/';
+			case EXTERNAL:
+				daPath = Environment.getExternalStorageDirectory() + '/' + '.' + '/' + Application.current.meta.get('file') + '/';
+			case MEDIA:
+				daPath = Environment.getExternalStorageDirectory()
+					+ '/'
+					+ 'Android'
+					+ '/'
+					+ 'media'
+					+ '/'
+					+ Application.current.meta.get('packageName')
+					+ '/';
 		}
 		#elseif ios
 		daPath = LimeSystem.applicationStorageDirectory;
@@ -92,10 +99,10 @@ class SUtil
 		}
 		#end
 
-                #if mobile
-                if (!sys.FileSystem.exists(SUtil.getStorageDirectory()))
+		#if mobile
+		if (!sys.FileSystem.exists(SUtil.getStorageDirectory()))
 			sys.FileSystem.createDirectory(SUtil.getStorageDirectory());
-                #end
+		#end
 	}
 
 	/**
@@ -167,7 +174,7 @@ class SUtil
 		LimeSystem.exit(1);
 	}
 
-        #if sys
+	#if sys
 	/**
 	 * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
 	 */
@@ -196,7 +203,7 @@ class SUtil
 					FileSystem.createDirectory(total);
 			}
 		}
-        }
+	}
 
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json',
 			fileData:String = 'you forgot to add something in your code lol'):Void

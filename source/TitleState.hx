@@ -22,11 +22,9 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
-
 #if windows
 import Discord.DiscordClient;
 #end
-
 #if cpp
 import sys.thread.Thread;
 #end
@@ -49,12 +47,12 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
 
-                #if android
-                FlxG.android.preventDefaultKeys = [BACK];
-                #end
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 
 		#if !mobile
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
@@ -63,26 +61,26 @@ class TitleState extends MusicBeatState
 		#if mobile
 		if (!sys.FileSystem.exists(SUtil.getStorageDirectory() + "/replays"))
 			sys.FileSystem.createDirectory(SUtil.getStorageDirectory() + "/replays");
-                #end
-                #if desktop
-                if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
+		#end
+		#if desktop
+		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
-                #end
+		#end
 
 		@:privateAccess
 		{
 			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
 		}
-		
+
 		PlayerSettings.init();
 
 		#if windows
 		DiscordClient.initialize();
 
-		Application.current.onExit.add (function (exitCode) {
+		Application.current.onExit.add(function(exitCode)
+		{
 			DiscordClient.shutdown();
-		 });
-		 
+		});
 		#end
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
@@ -306,15 +304,17 @@ class TitleState extends MusicBeatState
 			new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
 				// Get current version of Kade Engine
-				
+
 				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
 				var returnedData:Array<String> = [];
-				
-				http.onData = function (data:String)
+
+				http.onData = function(data:String)
 				{
 					returnedData[0] = data.substring(0, data.indexOf(';'));
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
+					if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim())
+						&& !OutdatedSubState.leftState
+						&& MainMenuState.nightly == "")
 					{
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
 						OutdatedSubState.needVer = returnedData[0];
@@ -326,12 +326,13 @@ class TitleState extends MusicBeatState
 						FlxG.switchState(new MainMenuState());
 					}
 				}
-				
-				http.onError = function (error) {
-				  trace('error: $error');
-				  FlxG.switchState(new MainMenuState()); // fail but we go anyway
+
+				http.onError = function(error)
+				{
+					trace('error: $error');
+					FlxG.switchState(new MainMenuState()); // fail but we go anyway
 				}
-				
+
 				http.request();
 			});
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);

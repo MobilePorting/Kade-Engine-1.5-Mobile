@@ -1,4 +1,4 @@
-//stolen from vs dave and dave engine LMFAOOO
+// stolen from vs dave and dave engine LMFAOOO
 package flixel.system;
 
 import flixel.text.FlxText;
@@ -49,7 +49,7 @@ class FlxSplash extends FlxState
 
 		animatedTex = Paths.getSparrowAtlas('ui/flixel_intro');
 
-		animatedIntro = new FlxSprite(0,0);
+		animatedIntro = new FlxSprite(0, 0);
 		animatedIntro.frames = animatedTex;
 		animatedIntro.animation.addByPrefix('intro', 'intro', 24);
 		animatedIntro.animation.play('intro');
@@ -74,8 +74,8 @@ class FlxSplash extends FlxState
 		if (FlxG.save.data.hasSeenSplash != null && FlxG.save.data.hasSeenSplash)
 		{
 			#if desktop skipScreen = new FlxText(0, FlxG.height, 0, 'Press Enter To Skip', 16); #end
-                        #if mobile skipScreen = new FlxText(0, FlxG.height, 0, 'Touch Your Screen To Skip', 16); #end
-                        #if web skipScreen = new FlxText(0, FlxG.height, 0, 'Press Enter Or Touch Your Screen To Skip', 16); #end
+			#if mobile skipScreen = new FlxText(0, FlxG.height, 0, 'Touch Your Screen To Skip', 16); #end
+			#if web skipScreen = new FlxText(0, FlxG.height, 0, 'Press Enter Or Touch Your Screen To Skip', 16); #end
 			skipScreen.setFormat("vcr.ttf", 18, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			skipScreen.borderSize = 1.5;
 			skipScreen.antialiasing = true;
@@ -87,6 +87,7 @@ class FlxSplash extends FlxState
 			FlxTween.tween(skipScreen, {alpha: 1}, 0.0001);
 		}
 	}
+
 	override public function update(elapsed:Float)
 	{
 		#if mobile
@@ -97,7 +98,7 @@ class FlxSplash extends FlxState
 				justTouched = true;
 		#end
 
-		if (FlxG.save.data.hasSeenSplash && (FlxG.keys.justPressed.ENTER #if mobile || justTouched #end #if web || FlxG.mouse.pressed #end))
+		if (FlxG.save.data.hasSeenSplash && (FlxG.keys.justPressed.ENTER #if mobile || justTouched #end#if web || FlxG.mouse.pressed #end))
 		{
 			onComplete(null);
 		}

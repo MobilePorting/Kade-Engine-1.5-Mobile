@@ -12,7 +12,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
-
 #if windows
 import Discord.DiscordClient;
 #end
@@ -74,8 +73,8 @@ class StoryMenuState extends MusicBeatState
 
 	override function create()
 	{
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
 
 		#if windows
 		// Updating Discord Rich Presence
@@ -199,9 +198,9 @@ class StoryMenuState extends MusicBeatState
 
 		trace("Line 165");
 
-                #if (mobileC || mobileCweb)
-                addVirtualPad(LEFT_FULL, A_B);
-                #end
+		#if (mobileC || mobileCweb)
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
 
 		super.create();
 	}

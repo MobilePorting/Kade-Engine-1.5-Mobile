@@ -45,7 +45,10 @@ class Log
 
 				File.saveContent(SUtil.getStorageDirectory()
 					+ 'logs/'
-					+ Lib.application.meta.get('file') + '(' + 'lime' + ')'
+					+ Lib.application.meta.get('file')
+					+ '('
+					+ 'lime'
+					+ ')'
 					+ '-'
 					+ Date.now().toString().replace(' ', '-').replace(':', "'")
 					+ '.log',

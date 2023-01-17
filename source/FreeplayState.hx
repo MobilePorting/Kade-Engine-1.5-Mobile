@@ -10,7 +10,6 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 import flixel.system.FlxSound;
-
 #if windows
 import Discord.DiscordClient;
 #end
@@ -37,8 +36,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
 
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
@@ -56,10 +55,10 @@ class FreeplayState extends MusicBeatState
 			}
 		 */
 
-		 #if windows
-		 // Updating Discord Rich Presence
-		 DiscordClient.changePresence("In the Freeplay Menu", null);
-		 #end
+		#if windows
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Freeplay Menu", null);
+		#end
 
 		var isDebug:Bool = false;
 
@@ -141,11 +140,11 @@ class FreeplayState extends MusicBeatState
 			trace(md);
 		 */
 
-                var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
+		var textBG:FlxSprite = new FlxSprite(0, FlxG.height - 26).makeGraphic(FlxG.width, 26, 0xFF000000);
 		textBG.alpha = 0.6;
 		add(textBG);
 
-                #if PRELOAD_ALL
+		#if PRELOAD_ALL
 		#if android
 		var leText:String = "Press C to listen to the Song.";
 		var size:Int = 16;
@@ -157,11 +156,11 @@ class FreeplayState extends MusicBeatState
 		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
 		text.scrollFactor.set();
 		add(text);
-                #end
+		#end
 
-                #if (mobileC || mobileCweb)
-                addVirtualPad(LEFT_FULL, A_B_C);
-                #end
+		#if (mobileC || mobileCweb)
+		addVirtualPad(LEFT_FULL, A_B_C);
+		#end
 
 		super.create();
 	}
@@ -223,7 +222,7 @@ class FreeplayState extends MusicBeatState
 
 		if (controls.ACCEPT)
 		{
-                        destroyFreeplayVocals();
+			destroyFreeplayVocals();
 
 			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
@@ -237,32 +236,36 @@ class FreeplayState extends MusicBeatState
 			LoadingState.loadAndSwitchState(new PlayState());
 		}
 
-                if(#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
-                if(instPlaying != curSelected) {
-                #if PRELOAD_ALL
-		destroyFreeplayVocals();
-		FlxG.sound.music.volume = 0;
-		var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
-		PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
-		if (PlayState.SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
-		else
-		        vocals = new FlxSound();
+		if (#if mobile virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE)
+		{
+			if (instPlaying != curSelected)
+			{
+				#if PRELOAD_ALL
+				destroyFreeplayVocals();
+				FlxG.sound.music.volume = 0;
+				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+				PlayState.SONG = Song.loadFromJson(poop, songs[curSelected].songName.toLowerCase());
+				if (PlayState.SONG.needsVoices)
+					vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+				else
+					vocals = new FlxSound();
 
-		FlxG.sound.list.add(vocals);
-		FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
-		vocals.play();
-		vocals.persist = true;
-		vocals.looped = true;
-		vocals.volume = 0.7;
-		instPlaying = curSelected;
-		#end
-                }
-                }
+				FlxG.sound.list.add(vocals);
+				FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 0.7);
+				vocals.play();
+				vocals.persist = true;
+				vocals.looped = true;
+				vocals.volume = 0.7;
+				instPlaying = curSelected;
+				#end
+			}
+		}
 	}
 
-        private static var vocals:FlxSound = null;
-        var instPlaying:Int = -1;
+	private static var vocals:FlxSound = null;
+
+	var instPlaying:Int = -1;
+
 	function changeDiff(change:Int = 0)
 	{
 		curDifficulty += change;
@@ -335,8 +338,10 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
-        public static function destroyFreeplayVocals() {
-		if(vocals != null) {
+	public static function destroyFreeplayVocals()
+	{
+		if (vocals != null)
+		{
 			vocals.stop();
 			vocals.destroy();
 		}

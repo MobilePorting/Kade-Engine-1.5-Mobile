@@ -18,21 +18,18 @@ class Paths
 
 	static var currentLevel:String;
 
-        public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
-        public static var currentTrackedTextures:Map<String, Texture> = [];
+	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+	public static var currentTrackedTextures:Map<String, Texture> = [];
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 	public static var localTrackedAssets:Array<String> = [];
 
-        public static function excludeAsset(key:String)
+	public static function excludeAsset(key:String)
 	{
 		if (!dumpExclusions.contains(key))
 			dumpExclusions.push(key);
 	}
 
-	public static var dumpExclusions:Array<String> = [
-		'assets/music/freakyMenu.$SOUND_EXT',
-		'assets/music/breakfast.$SOUND_EXT',
-	];
+	public static var dumpExclusions:Array<String> = ['assets/music/freakyMenu.$SOUND_EXT', 'assets/music/breakfast.$SOUND_EXT',];
 
 	public static function clearUnusedMemory()
 	{
@@ -44,7 +41,7 @@ class Paths
 				@:privateAccess
 				if (obj != null)
 				{
-                                        var isTexture:Bool = currentTrackedTextures.exists(key);
+					var isTexture:Bool = currentTrackedTextures.exists(key);
 					if (isTexture)
 					{
 						var texture = currentTrackedTextures.get(key);
@@ -76,8 +73,8 @@ class Paths
 				}
 			}
 		}
-                System.gc();
-                #if cpp
+		System.gc();
+		#if cpp
 		cpp.NativeGc.run(true);
 		#end
 	}
@@ -160,7 +157,7 @@ class Paths
 		return getPath(file, type, library);
 	}
 
-	inline static public function lua(key:String,?library:String)
+	inline static public function lua(key:String, ?library:String)
 	{
 		return getPath('data/$key.lua', TEXT, library);
 	}
@@ -220,10 +217,9 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-        /*inline static public function formatToSongPath(path:String) {
+	/*inline static public function formatToSongPath(path:String) {
 		return path.toLowerCase().replace(' ', '-');
 	}*/
-
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
@@ -234,7 +230,7 @@ class Paths
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
 	}
 
-        public static function returnGraphic(key:String, ?cache:Bool = true):FlxGraphic
+	public static function returnGraphic(key:String, ?cache:Bool = true):FlxGraphic
 	{
 		var path:String = 'assets/$key.png';
 		if (OpenFlAssets.exists(path, IMAGE))

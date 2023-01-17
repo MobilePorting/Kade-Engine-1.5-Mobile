@@ -16,8 +16,8 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	public function new(x:Float, y:Float)
 	{
-                //Paths.clearUnusedMemory();
-                //Paths.clearStoredMemory();
+		// Paths.clearUnusedMemory();
+		// Paths.clearStoredMemory();
 
 		var daStage = PlayState.curStage;
 		var daBf:String = '';
@@ -50,10 +50,10 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		bf.playAnim('firstDeath');
 
-                #if (mobileC || mobileCweb)
-                addVirtualPad(NONE, A_B);
-                addVirtualPadCamera();
-                #end
+		#if (mobileC || mobileCweb)
+		addVirtualPad(NONE, A_B);
+		addVirtualPadCamera();
+		#end
 	}
 
 	override function update(elapsed:Float)
@@ -69,7 +69,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			FlxG.sound.music.stop();
 
-                        FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
+			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
 
 			if (PlayState.isStoryMode)
 				FlxG.switchState(new StoryMenuState());
