@@ -43,7 +43,7 @@ class FPS extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("robotoserif120pt.ttf", 16, color);
+		defaultTextFormat = new TextFormat("robotoserif120pt.ttf", 20, color);
 		text = "FPS: ";
 
 		cacheCount = 0;
@@ -76,7 +76,7 @@ class FPS extends TextField
 		var currentCount = times.length;
 		currentFPS = Math.round((currentCount + cacheCount) / 2);
 
-		if (currentCount != cacheCount /*&& visible*/)
+		if (currentCount != cacheCount && visible)
 		{
 			text = "FPS: " + currentFPS;
 			#if openfl
