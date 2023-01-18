@@ -7,7 +7,7 @@ import flixel.FlxCamera;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
 #end
-#if windows
+#if discord_rpc
 import Discord.DiscordClient;
 #end
 import flixel.tweens.FlxTween;
@@ -162,7 +162,7 @@ class MusicBeatState extends FlxUIState
 		updateCurStep();
 		updateBeat();
 
-                if (FlxG.keys.justPressed.F11){FlxG.fullscreen = !FlxG.fullscreen;}
+                if (FlxG.keys.justPressed.F5){FlxG.fullscreen = !FlxG.fullscreen;}
 
 		if (oldStep != curStep && curStep > 0)
 			stepHit();
