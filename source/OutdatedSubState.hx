@@ -95,18 +95,18 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-#if (mobileC || mobileCweb)
-var justTouched:Bool = false;
+		#if (mobileC || mobileCweb)
+		var justTouched:Bool = false;
 
-for (touch in FlxG.touches.list)
-	if (touch.justPressed)
-		justTouched = true;
-#end
-			if (controls.ACCEPT #if (mobileC || mobileCweb) || justTouched #end)
-			{
-				leftState = true;
-				FlxG.switchState(new MainMenuState());
-			}
+		for (touch in FlxG.touches.list)
+			if (touch.justPressed)
+				justTouched = true;
+		#end
+		if (controls.ACCEPT #if (mobileC || mobileCweb) || justTouched #end)
+		{
+			leftState = true;
+			FlxG.switchState(new MainMenuState());
+		}
 		super.update(elapsed);
 	}
 }

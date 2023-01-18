@@ -56,13 +56,13 @@ class GameOverState extends FlxTransitionableState
 
 	override function update(elapsed:Float)
 	{
-#if (mobileC || mobileCweb)
-var justTouched:Bool = false;
+		#if (mobileC || mobileCweb)
+		var justTouched:Bool = false;
 
-for (touch in FlxG.touches.list)
-	if (touch.justPressed)
-		justTouched = true;
-#end
+		for (touch in FlxG.touches.list)
+			if (touch.justPressed)
+				justTouched = true;
+		#end
 
 		var pressed:Bool = FlxG.keys.justPressed.ANY;
 
