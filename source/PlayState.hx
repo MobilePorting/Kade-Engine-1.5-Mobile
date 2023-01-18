@@ -1,8 +1,5 @@
 package;
 
-/*#if (mobileC || mobileCweb)
-	import mobile.flixel.FlxVirtualPad;
-	#end */
 import flixel.input.keyboard.FlxKey;
 import haxe.Exception;
 import openfl.geom.Matrix;
