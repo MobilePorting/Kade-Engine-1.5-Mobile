@@ -1,4 +1,4 @@
-package;
+package openfl.display;
 
 import openfl.system.System;
 import flixel.math.FlxMath;
@@ -22,7 +22,7 @@ import openfl.Lib;
 @:fileXml('tags="haxe,release"')
 @:noDebug
 #end
-class FpsAndMemoryCounter extends TextField
+class FPS extends TextField
 {
 	/**
 		The current frame rate, expressed using frames-per-second
@@ -43,7 +43,7 @@ class FpsAndMemoryCounter extends TextField
 		currentFPS = 0;
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("robotoserif120pt.ttf", 15, color);
+		defaultTextFormat = new TextFormat("robotoserif120pt.ttf", 16, color);
 		text = "FPS: ";
 
 		cacheCount = 0;
