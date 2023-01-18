@@ -78,7 +78,7 @@ class Main extends Sprite
 		}
 
 		#if mobile
-		framerate = 60
+		framerate = 60;
 		#end
 
 		#if !debug
