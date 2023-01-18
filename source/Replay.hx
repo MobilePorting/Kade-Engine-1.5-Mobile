@@ -94,7 +94,8 @@ class Replay
 			+ ' replay...');
 		try
 		{
-			var repl:ReplayJSON = cast Json.parse(File.getContent(#if mobile SUtil.getStorageDirectory() + "replays/" + #else Sys.getCwd() + "assets/replays/" + #end path));
+			var repl:ReplayJSON = cast Json.parse(File.getContent(#if mobile SUtil.getStorageDirectory() + "replays/" + #else Sys.getCwd()
+				+ "assets/replays/" + #end path));
 			replay = repl;
 		}
 		catch (e)

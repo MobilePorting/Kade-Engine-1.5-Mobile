@@ -136,7 +136,10 @@ class MusicBeatSubstate extends FlxSubState
 		updateCurStep();
 		curBeat = Math.floor(curStep / 4);
 
-                if (FlxG.keys.justPressed.F5){FlxG.fullscreen = !FlxG.fullscreen;}
+		if (FlxG.keys.justPressed.F5)
+		{
+			FlxG.fullscreen = !FlxG.fullscreen;
+		}
 
 		if (oldStep != curStep && curStep > 0)
 			stepHit();
