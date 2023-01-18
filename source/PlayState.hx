@@ -1,8 +1,8 @@
 package;
 
-#if (mobileC || mobileCweb)
+/*#if (mobileC || mobileCweb)
 import mobile.flixel.FlxVirtualPad;
-#end
+#end*/
 import flixel.input.keyboard.FlxKey;
 import haxe.Exception;
 import openfl.geom.Matrix;
@@ -327,7 +327,7 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
 
-		FlxG.cameras.setDefaultDrawTarget = [camGame];
+		FlxCamera.defaultCameras = [camGame];
 
 		persistentUpdate = true;
 		persistentDraw = true;
