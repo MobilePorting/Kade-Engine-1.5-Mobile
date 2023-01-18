@@ -95,8 +95,14 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		for (touch in FlxG.touches.list)
-			if (controls.ACCEPT || touch.justPressed)
+#if (mobileC || mobileCweb)
+var justTouched:Bool = false;
+
+for (touch in FlxG.touches.list)
+	if (touch.justPressed)
+		justTouched = true;
+#end
+			if (controls.ACCEPT #if (mobileC || mobileCweb) || justTouched #end)
 			{
 				leftState = true;
 				FlxG.switchState(new MainMenuState());
