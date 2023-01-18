@@ -162,6 +162,8 @@ class MusicBeatState extends FlxUIState
 		updateCurStep();
 		updateBeat();
 
+                if (FlxG.keys.justPressed.F11){FlxG.fullscreen = !FlxG.fullscreen;}
+
 		if (oldStep != curStep && curStep > 0)
 			stepHit();
 
