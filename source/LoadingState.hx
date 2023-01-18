@@ -22,8 +22,6 @@ class LoadingState extends MusicBeatState
 	var callbacks:MultiCallback;
 
 	var logo:FlxSprite;
-	var gfDance:FlxSprite;
-	var danceLeft = false;
 
 	function new(target:FlxState, stopMusic:Bool)
 	{
@@ -34,21 +32,11 @@ class LoadingState extends MusicBeatState
 
 	override function create()
 	{
-		logo = new FlxSprite(-150, -100);
-		logo.frames = Paths.getSparrowAtlas('logoBumpin');
+		logo = new FlxSprite(110, -0).loadGraphic(Paths.image('KadeEngineLogo'));
 		logo.antialiasing = true;
-		logo.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logo.animation.play('bump');
 		logo.updateHitbox();
-		// logoBl.screenCenter();
-		// logoBl.color = FlxColor.BLACK;
-
-		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
-		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
-		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-		gfDance.antialiasing = true;
-		add(gfDance);
+		logo.y += 150;
+		logo.x += 200;
 		add(logo);
 
 		initSongsManifest().onComplete(function(lib)
@@ -108,14 +96,6 @@ class LoadingState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-
-		logo.animation.play('bump');
-		danceLeft = !danceLeft;
-
-		if (danceLeft)
-			gfDance.animation.play('danceRight');
-		else
-			gfDance.animation.play('danceLeft');
 	}
 
 	override function update(elapsed:Float)
