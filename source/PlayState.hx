@@ -1904,6 +1904,8 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore, songScoreDef, nps, maxNPS, accuracy);
+                if (!FlxG.save.data.accuracyDisplay)
+			scoreTxt.text = "Score: " + songScore;
 		if (#if (mobileCweb || ios) virtualPad.buttonP.justPressed
 			|| #end FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end && startedCountdown
 			&& canPause)
