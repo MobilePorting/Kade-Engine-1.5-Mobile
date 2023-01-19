@@ -2,7 +2,7 @@ import flixel.math.FlxMath;
 import flixel.FlxCamera;
 import flixel.math.FlxPoint;
 import flixel.FlxObject;
-#if windows
+#if discord_rpc
 import Discord.DiscordClient;
 import sys.thread.Thread;
 #end
@@ -22,7 +22,7 @@ class GameplayCustomizeState extends MusicBeatState
 
 	var sick:FlxSprite = new FlxSprite().loadGraphic(Paths.image('sick', 'shared'));
 
-	var bf:Boyfriend = new Boyfriend(770, 450, 'bf');
+	var bf:Boyfriend;
 	var dad:Character;
 
 	var strumLine:FlxSprite;
@@ -32,7 +32,7 @@ class GameplayCustomizeState extends MusicBeatState
 
 	public override function create()
 	{
-		#if windows
+		#if discord_rpc
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Customizing Gameplay", null);
 		#end
@@ -57,6 +57,8 @@ class GameplayCustomizeState extends MusicBeatState
 		var camFollow = new FlxObject(0, 0, 1, 1);
 
 		dad = new Character(100, 100, 'dad');
+
+                bf = new Boyfriend(770, 450, 'bf');
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x + 400, dad.getGraphicMidpoint().y);
 
