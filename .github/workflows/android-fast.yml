@@ -56,7 +56,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -Dno-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
+        run: haxelib run lime build android -no-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
@@ -117,7 +117,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -Dno-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D nolua -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
+        run: haxelib run lime build android -no-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D nolua -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
@@ -179,7 +179,7 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
       - name: Compile
-        run: haxelib run lime build android -Dno-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
+        run: haxelib run lime build android -no-gradle -D android-strip-debug -D no-compilation -D macro-times -D analyzer-optimize -D android-disable-debug=true -D android-stl=libc++ -D mobileC -${{ matrix.build }} -${{ matrix.arch }}
         env:
           cert_pass: 123456
           cert_alias_pass: 123456
