@@ -3487,6 +3487,8 @@ class PlayState extends MusicBeatState
 		gf.playAnim('scared', true);
 	}
 
+        var danced:Bool = false;
+
 	override function stepHit()
 	{
 		super.stepHit();
@@ -3502,11 +3504,6 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('stepHit', [curStep]);
 		}
 		#end
-
-		if (dad.curCharacter == 'spooky' && curStep % 4 == 2)
-		{
-			// dad.dance();
-		}
 
 		// yes this updates every step.
 		// yes this is bad
@@ -3606,11 +3603,6 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.animation.curAnim.name.startsWith("sing"))
 		{
 			boyfriend.playAnim('idle');
-		}
-
-		if (!dad.animation.curAnim.name.startsWith("sing"))
-		{
-			dad.dance();
 		}
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
