@@ -1904,7 +1904,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore, songScoreDef, nps, maxNPS, accuracy);
-                if (!FlxG.save.data.accuracyDisplay)
+		if (!FlxG.save.data.accuracyDisplay)
 			scoreTxt.text = "Score: " + songScore;
 		if (#if (mobileCweb || ios) virtualPad.buttonP.justPressed
 			|| #end FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end && startedCountdown
@@ -3489,7 +3489,7 @@ class PlayState extends MusicBeatState
 		gf.playAnim('scared', true);
 	}
 
-        var danced:Bool = false;
+	var danced:Bool = false;
 
 	override function stepHit()
 	{

@@ -746,7 +746,7 @@ class Controls extends FlxActionSet
 		// trace(FlxKey.fromString(FlxG.save.data.upBind));
 
 		removeKeyboard();
-                KeyBinds.keyCheck();
+		KeyBinds.keyCheck();
 		if (gamepadsAdded.length != 0)
 			removeGamepad();
 		KeyBinds.keyCheck();
