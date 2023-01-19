@@ -87,6 +87,12 @@ class KadeEngineData
 		if (FlxG.save.data.cpuStrums == null)
 			FlxG.save.data.cpuStrums = true;
 
+                if (FlxG.save.data.strumline == null)
+			FlxG.save.data.strumline = false;
+
+		if (FlxG.save.data.customStrumLine == null)
+			FlxG.save.data.customStrumLine = 0;
+
 		if (FlxG.save.data.render == null)
 			FlxG.save.data.render = 0;
 
