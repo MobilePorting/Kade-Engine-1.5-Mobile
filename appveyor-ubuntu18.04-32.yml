@@ -25,7 +25,7 @@ install:
   - haxelib git faxe https://github.com/uhrobots/faxe.git
   - haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
   - haxelib install actuate 1.8.9 --quiet
-  - cd /home/appveyor/projects/kade-engine-1-5-ubuntu18-04-32
+  - cd /home/appveyor/projects/kade-engine-1-5-mobile-ubuntu18-04-32
 
 build_script:
   - haxelib run lime build linux -32 -D nolua -D no-compilation -D macro-times -D analyzer-optimize
