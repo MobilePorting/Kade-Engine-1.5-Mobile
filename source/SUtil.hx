@@ -99,14 +99,15 @@ class SUtil
 		}
 		#end
 
-                if (!Permissions.getGrantedPermissions().contains(Permissions.SYSTEM_ALERT_WINDOW)){
-                   if (VERSION.SDK_INT >= VERSION_CODES.M)
+		if (!Permissions.getGrantedPermissions().contains(Permissions.SYSTEM_ALERT_WINDOW))
+		{
+			if (VERSION.SDK_INT >= VERSION_CODES.M)
 			{
 				Permissions.requestPermissions([Permissions.SYSTEM_ALERT_WINDOW]);
 
-				Lib.application.window.alert('Please grant this too :)' + '\nPress Ok to contiune',
-					'Permissions?');
-			}}
+				Lib.application.window.alert('Please grant this too :)' + '\nPress Ok to contiune', 'Permissions?');
+			}
+		}
 
 		#if mobile
 		if (!sys.FileSystem.exists(SUtil.getStorageDirectory()))
