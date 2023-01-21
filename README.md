@@ -3,8 +3,8 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/mcagabe19/Kade-Engine-1.5-Android)
 
 Ubuntu 18 Builds
-* 32: [![AppVeyor](https://img.shields.io/appveyor/build/mcagabe19/kade-engine-1-5-ubuntu18-04-32)](https://ci.appveyor.com/project/mcagabe19/kade-engine-1-5-ubuntu18-04-32/branch/master/artifacts)
-* 64: [![AppVeyor](https://img.shields.io/appveyor/build/mcagabe19/kade-engine-1-5-ubuntu18-04-64)](https://ci.appveyor.com/project/mcagabe19/kade-engine-1-5-ubuntu18-04-64/branch/master/artifacts)
+* 32: [![AppVeyor](https://img.shields.io/appveyor/build/mcagabe19/kade-engine-1-5-mobile-ubuntu18-04-32)](https://ci.appveyor.com/project/mcagabe19/kade-engine-1-5-mobile-ubuntu18-04-32/branch/master/artifacts)
+* 64: [![AppVeyor](https://img.shields.io/appveyor/build/mcagabe19/kade-engine-1-5-mobile-ubuntu18-04-64)](https://ci.appveyor.com/project/mcagabe19/kade-engine-1-5-mobile-ubuntu18-04-64/branch/master/artifacts)
 
 # Friday Night Funkin': Kade Engine
 ## Friday Night Funkin'
