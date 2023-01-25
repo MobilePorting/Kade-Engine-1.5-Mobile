@@ -36,12 +36,12 @@ class LoadReplayState extends MusicBeatState
 		#if sys
 		#if mobile
 		controlsStrings = sys.FileSystem.readDirectory(SUtil.getStorageDirectory() + "/replays/");
-		trace(controlsStrings);
 		#else
 		controlsStrings = sys.FileSystem.readDirectory(Sys.getCwd() + "/assets/replays/");
-		trace(controlsStrings);
 		#end
 		#end
+
+                trace(controlsStrings);
 
 		controlsStrings.sort(Reflect.compare);
 
@@ -84,9 +84,15 @@ class LoadReplayState extends MusicBeatState
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
 
+                #if (mobileC || mobileCweb)
 		versionShit = new FlxText(5, FlxG.height - 34, 0,
-			"Replay Loader (ESCAPE TO GO BACK)\nNOTICE!!!! Replays are in a beta stage, and they are probably not 100% correct. expect misses and other stuff that isn't there!",
+			"Replay Loader (Press B TO GO BACK)\nNOTICE!!!! Replays are in a beta stage, and they are probably not 100% correct. expect misses and other stuff that isn't there!",
 			12);
+                #else
+                versionShit = new FlxText(5, FlxG.height - 34, 0,
+			"Replay Loader (Press ESCAPE TO GO BACK)\nNOTICE!!!! Replays are in a beta stage, and they are probably not 100% correct. expect misses and other stuff that isn't there!",
+			12);
+                #end
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
