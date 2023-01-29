@@ -180,6 +180,15 @@
                 <!--Audio Recording Fix (if you are hxcodec user disable this option)-->
                 <config:android target-sdk-version="29" />
 
+		<!--Permissions-->
+		<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
+		<config:android permission="android.permission.ACCESS_WIFI_STATE" />
+		<config:android permission="android.permission.INTERNET" />
+		<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+		<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
+                <!-- <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" /> -->
+                <config:android permission="android.permission.VIBRATE" />
+
 		<!--Gradle-->
 		<config:android gradle-version="7.6" gradle-plugin="7.3.1" />
 	</section>
