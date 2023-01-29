@@ -100,7 +100,7 @@ class Main extends Sprite
 
 	var game:FlxGame;
 
-	var fpsCounter:FPS;
+	public static var fpsCounter:FPS;
 
 	public function toggleFPS():Void
 	{
