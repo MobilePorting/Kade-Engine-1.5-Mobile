@@ -1,3 +1,5 @@
+![Kade Engine logo](assets/preload/images/KadeEngineLogo.png)
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/mcagabe19/Kade-Engine-1.5-Android)
 
 Ubuntu 18 Builds
