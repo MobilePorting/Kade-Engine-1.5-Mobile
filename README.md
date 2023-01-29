@@ -12,6 +12,7 @@ Classic kade engine 1.5 what you want xd
 ### Android Credits
  - [mcagabe19](https://github.com/mcagabe19) - Porter
  - [Sirox](https://github.com/sirox228) - Helper
+ - [UNSTOP4BLE](https://github.com/unstop4ble) - Pause Button Adder And Ios Helper
  - [ben ok (kamodrip)](https://github.com/Akhia11) - Tester (Mobile)
  - [luigionline1](https://github.com/luigionline1) - Tester (Linux And Windows)
 ### Friday Night Funkin'
