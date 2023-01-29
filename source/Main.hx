@@ -102,7 +102,10 @@ class Main extends Sprite
 
 	public function toggleFPS():Void
 	{
-		fpsCounter.visible = (!FlxG.save.data.fps ? "false" : "true");
+                if(FlxG.save.data.fps)
+		fpsCounter.visible = true
+                else
+                fpsCounter.visible = false
 	}
 
 	public function changeFPSColor(color:FlxColor)
