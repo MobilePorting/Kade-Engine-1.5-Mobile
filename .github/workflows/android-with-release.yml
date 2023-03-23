@@ -192,7 +192,7 @@ jobs:
     steps:
       - name: Download Armv6 Build
         uses: actions/download-artifact@main
-         with:
+        with:
           name: build-ubuntu${{ matrix.version }}-armv6-release
       - name: Download Armv7 Build
         uses: actions/download-artifact@main
