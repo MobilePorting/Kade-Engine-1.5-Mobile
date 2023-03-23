@@ -90,7 +90,7 @@ class FlxSplash extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-                if (FlxG.save.data.fps)
+		if (FlxG.save.data.fps)
 			(cast(Lib.current.getChildAt(0), Main)).fpsCounter.visible = true;
 		else
 			(cast(Lib.current.getChildAt(0), Main)).fpsCounter.visible = false;

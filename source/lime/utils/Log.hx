@@ -54,7 +54,8 @@ class Log
 						+ '-'
 						+ Date.now().toString().replace(' ', '-').replace(':', "'")
 						+ '.txt',
-						message + '\n');
+						message
+						+ '\n');
 				}
 				catch (e:Dynamic)
 				{
@@ -170,9 +171,7 @@ class Log
 		}
 		if (untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log == null)
 		{
-			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log = function()
-			{
-			};
+			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log = function() {};
 		}
 		#end
 	}
