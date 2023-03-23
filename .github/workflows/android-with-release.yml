@@ -190,27 +190,27 @@ jobs:
       matrix:
         version: [20.04]
     steps:
-     - name: Download Armv6 Build
-       uses: actions/download-artifact@main
-        with:
+      - name: Download Armv6 Build
+        uses: actions/download-artifact@main
+         with:
           name: build-ubuntu${{ matrix.version }}-armv6-release
-     - name: Download Armv7 Build
-       uses: actions/download-artifact@main
+      - name: Download Armv7 Build
+        uses: actions/download-artifact@main
         with:
           name: build-ubuntu${{ matrix.version }}-armv7-release
-     - name: Download Arm64 Build
-       uses: actions/download-artifact@main
+      - name: Download Arm64 Build
+        uses: actions/download-artifact@main
         with:
           name: build-ubuntu${{ matrix.version }}-arm64-release
-     - name: Download x86 Build
-       uses: actions/download-artifact@main
+      - name: Download x86 Build
+        uses: actions/download-artifact@main
         with:
           name: build-ubuntu${{ matrix.version }}-32-release
-     - name: Download x86_64 Build
-       uses: actions/download-artifact@main
+      - name: Download x86_64 Build
+        uses: actions/download-artifact@main
         with:
           name: build-ubuntu${{ matrix.version }}-64-release
-     - name: Release
+      - name: Release
         uses: softprops/action-gh-release@master
         if: startsWith(github.ref, 'refs/tags/')
         with:
