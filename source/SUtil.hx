@@ -24,9 +24,9 @@ using StringTools;
 enum StorageType
 {
 	DATA;
-        EXTERNAL;
+	EXTERNAL;
 	EXTERNAL_DATA;
-        MEDIA;
+	MEDIA;
 }
 
 /**
@@ -50,7 +50,7 @@ class SUtil
 				daPath = Context.getFilesDir() + '/';
 			case EXTERNAL_DATA:
 				daPath = Context.getExternalFilesDir(null) + '/';
-                        case EXTERNAL:
+			case EXTERNAL:
 				daPath = Environment.getExternalStorageDirectory() + '/.' + Application.current.meta.get('file') + '/';
 			case MEDIA:
 				daPath = Environment.getExternalStorageDirectory() + '/Android/media/' + Application.current.meta.get('packageName') + '/';
@@ -68,7 +68,7 @@ class SUtil
 	public static function checkFiles():Void
 	{
 		#if mobile
-                if (!sys.FileSystem.exists(SUtil.getStorageDirectory()))
+		if (!sys.FileSystem.exists(SUtil.getStorageDirectory()))
 		{
 			Lib.application.window.alert('Please create folder to\n' + SUtil.getStorageDirectory() + '\nPress Ok to close the app', 'Error!');
 			LimeSystem.exit(1);
@@ -77,8 +77,8 @@ class SUtil
 	}
 
 	/**
-	 * Uncaught error handler, original made by: Sqirra-RNG and YoshiCrafter29
-	 */
+ * Uncaught error handler, original made by: Sqirra-RNG and YoshiCrafter29
+ */
 	public static function uncaughtErrorHandler():Void
 	{
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
@@ -123,7 +123,14 @@ class SUtil
 			if (!FileSystem.exists(SUtil.getStorageDirectory() + 'logs'))
 				FileSystem.createDirectory(SUtil.getStorageDirectory() + 'logs');
 
-			File.saveContent(SUtil.getStorageDirectory() + 'logs/' + Lib.application.meta.get('file') + '-' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.log', msg + '\n');
+			File.saveContent(SUtil.getStorageDirectory()
+				+ 'logs/'
+				+ Lib.application.meta.get('file')
+				+ '-'
+				+ Date.now().toString().replace(' ', '-').replace(':', "'")
+				+ '.log',
+				msg
+				+ '\n');
 		}
 		catch (e:Dynamic)
 		{
@@ -141,8 +148,8 @@ class SUtil
 	}
 
 	/**
-	 * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
-	 */
+ * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
+ */
 	public static function mkDirs(directory:String):Void
 	{
 		var total:String = '';
