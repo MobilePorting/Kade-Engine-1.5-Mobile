@@ -409,10 +409,6 @@ class Controls extends FlxActionSet
 				inline forEachBound(Control.BACK, (action, state) -> addButtonNOTES(action, VirtualPad.buttonB, state));
 			case P:
 				inline forEachBound(Control.PAUSE, (action, state) -> addButtonNOTES(action, VirtualPad.buttonP, state));
-<<<<<<< HEAD
-=======
-				a
->>>>>>> 29fd3815b216b48be74e7f3a683312f508d4eeee
 			case A_B | A_B_C | A_B_E | A_B_X_Y | A_B_C_X_Y | A_B_X_Y_U_D | A_B_C_X_Y_Z | A_B_C_D_V_X_Y_Z:
 				inline forEachBound(Control.ACCEPT, (action, state) -> addButtonNOTES(action, VirtualPad.buttonA, state));
 				inline forEachBound(Control.BACK, (action, state) -> addButtonNOTES(action, VirtualPad.buttonB, state));
