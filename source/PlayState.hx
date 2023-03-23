@@ -1015,7 +1015,7 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		#if (mobileC || mobileCweb)
-		addMobileControls();
+		if(!loadRep){addMobileControls();}
 		#end
 
 		if (FlxG.save.data.songPosition)
@@ -1206,7 +1206,7 @@ class PlayState extends MusicBeatState
 		inCutscene = false;
 
 		#if (mobileC || mobileCweb)
-		mobileControls.visible = true;
+		if(!loadRep){mobileControls.visible = true;}
 		#end
 
 		generateStaticArrows(0);
@@ -2571,7 +2571,7 @@ class PlayState extends MusicBeatState
 	function endSong():Void
 	{
 		#if (mobileC || mobileCweb)
-		mobileControls.visible = false;
+		if(!loadRep){mobileControls.visible = false;}
 		#end
 
 		if (!loadRep)
