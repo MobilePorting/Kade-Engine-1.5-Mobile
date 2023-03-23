@@ -1015,7 +1015,7 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		#if (mobileC || mobileCweb)
-		if(!loadRep){addMobileControls();}
+		if(!loadRep){addMobileControls(false);}
 		#end
 
 		if (FlxG.save.data.songPosition)
@@ -1102,7 +1102,7 @@ class PlayState extends MusicBeatState
 
 		#if (mobileCweb || ios)
 		addVirtualPad(NONE, P);
-		addVirtualPadCamera();
+		addVirtualPadCamera(false);
 		#end
 
 		super.create();
