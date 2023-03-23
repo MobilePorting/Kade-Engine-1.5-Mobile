@@ -77,8 +77,8 @@ class SUtil
 	}
 
 	/**
- * Uncaught error handler, original made by: Sqirra-RNG and YoshiCrafter29
- */
+        * Uncaught error handler, original made by: Sqirra-RNG and YoshiCrafter29
+        */
 	public static function uncaughtErrorHandler():Void
 	{
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onError);
