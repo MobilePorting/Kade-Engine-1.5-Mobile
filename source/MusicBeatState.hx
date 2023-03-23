@@ -123,7 +123,7 @@ class MusicBeatState extends FlxUIState
 
 		super.destroy();
 
-		#if mobile
+		#if (mobileC || mobileCweb)
 		if (virtualPad != null)
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
 
