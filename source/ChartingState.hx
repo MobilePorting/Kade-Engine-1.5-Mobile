@@ -863,6 +863,8 @@ class ChartingState extends MusicBeatState
 
 		if (#if (mobileC || mobileCweb) virtualPad.buttonB.justPressed || #end FlxG.keys.justPressed.ESCAPE)
 		{
+                        FlxG.mouse.visible = false;
+
 			FlxG.sound.music.stop();
 			vocals.stop();
 			FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7);
@@ -871,6 +873,8 @@ class ChartingState extends MusicBeatState
 
 		if (#if (mobileC || mobileCweb) virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER)
 		{
+                        FlxG.mouse.visible = false;
+
 			lastSection = curSection;
 
 			PlayState.SONG = _song;
