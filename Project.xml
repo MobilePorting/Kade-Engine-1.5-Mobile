@@ -172,25 +172,23 @@
 	<haxedef name="HXCPP_CHECK_POINTER" />
 	<haxedef name="HXCPP_STACK_LINE" />
 	<haxedef name="HXCPP_STACK_TRACE"/>
+	
+	<!--Always enable Null Object Reference check-->
+	<haxedef name="HXCPP_CHECK_POINTER" />
+	<haxedef name="HXCPP_STACK_LINE" />
+	<haxedef name="HXCPP_STACK_TRACE" />
 
 	<section if="android">
+		<config>
                 <!--DONT EDIT OR DELETE THIS-->
                 <certificate path="key.keystore" password="123456" alias="kade" alias-password="123456" unless="debug"/>
 
-                <!--Audio Recording Fix (if you are hxcodec user disable this option)-->
-                <config:android target-sdk-version="29" />
+			<!--Gradle-->
+			<android gradle-version="7.4.2" gradle-plugin="7.3.1" />
 
-		<!--Permissions-->
-		<config:android permission="android.permission.ACCESS_NETWORK_STATE" />
-		<config:android permission="android.permission.ACCESS_WIFI_STATE" />
-		<config:android permission="android.permission.INTERNET" />
-		<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
-		<config:android permission="android.permission.READ_EXTERNAL_STORAGE" />
-                <!-- <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE" /> -->
-                <config:android permission="android.permission.VIBRATE" />
-
-		<!--Gradle-->
-		<config:android gradle-version="7.4.2" gradle-plugin="7.3.1" />
+			<!--Target SDK-->
+			<android target-sdk-version="29" if="${lime &lt; 8.1.0}" />
+		</config>
 	</section>
 
 	<section if="ios">

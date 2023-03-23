@@ -2,6 +2,7 @@ package mobile.flixel;
 
 import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
+import flixel.util.FlxDestroyUtil;
 import openfl.display.BitmapData;
 import openfl.display.Shape;
 import mobile.flixel.FlxButton;
@@ -22,7 +23,7 @@ class FlxHitbox extends FlxSpriteGroup
 	/**
 	 * Create the zone.
 	 */
-	public function new()
+	public function new():Void
 	{
 		super();
 
@@ -37,14 +38,14 @@ class FlxHitbox extends FlxSpriteGroup
 	/**
 	 * Clean up memory.
 	 */
-	override function destroy()
+	override function destroy():Void
 	{
 		super.destroy();
 
-		buttonLeft = null;
-		buttonDown = null;
-		buttonUp = null;
-		buttonRight = null;
+		buttonLeft = FlxDestroyUtil.destroy(buttonLeft);
+		buttonUp = FlxDestroyUtil.destroy(buttonUp);
+		buttonDown = FlxDestroyUtil.destroy(buttonDown);
+		buttonRight = FlxDestroyUtil.destroy(buttonRight);
 	}
 
 	private function createHintGraphic(Width:Int, Height:Int, Color:Int = 0xFFFFFF):BitmapData
@@ -70,8 +71,8 @@ class FlxHitbox extends FlxSpriteGroup
 		hint.alpha = 0.00001;
 		hint.onDown.callback = hint.onOver.callback = function()
 		{
-			if (hint.alpha != 0.25)
-				hint.alpha = 0.25;
+			if (hint.alpha != 0.2)
+				hint.alpha = 0.2;
 		}
 		hint.onUp.callback = hint.onOut.callback = function()
 		{

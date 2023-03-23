@@ -1,12 +1,15 @@
 package lime.utils;
 
-import flash.system.System;
+#if android
+import android.widget.Toast;
+#end
 import haxe.PosInfos;
+import lime.app.Application;
+import lime.system.System;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
 #end
-import openfl.Lib;
 
 using StringTools;
 
@@ -24,7 +27,7 @@ class Log
 		if (level >= LogLevel.DEBUG)
 		{
 			#if js
-			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").debug("[" + info.className + "] " + message);
+			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").debug("[" + info.className + "] " + Std.string(message));
 			#else
 			println("[" + info.className + "] " + Std.string(message));
 			#end
@@ -35,32 +38,37 @@ class Log
 	{
 		if (level >= LogLevel.ERROR)
 		{
-			var message = "[" + info.className + "] ERROR: " + message;
+			var message:String = "[" + info.className + "] ERROR: " + Std.string(message);
 
 			if (throwErrors)
 			{
 				#if sys
-				if (!FileSystem.exists(SUtil.getStorageDirectory() + 'logs'))
-					FileSystem.createDirectory(SUtil.getStorageDirectory() + 'logs');
+				try
+				{
+					if (!FileSystem.exists(SUtil.getStorageDirectory() + 'logs'))
+						FileSystem.createDirectory(SUtil.getStorageDirectory() + 'logs');
 
-				File.saveContent(SUtil.getStorageDirectory()
-					+ 'logs/'
-					+ Lib.application.meta.get('file')
-					+ '('
-					+ 'lime'
-					+ ')'
-					+ '-'
-					+ Date.now().toString().replace(' ', '-').replace(':', "'")
-					+ '.log',
-					message
-					+ '\n');
-
-				Sys.println(message);
-				Lib.application.window.alert(message, 'Error!');
-				System.exit(1);
-				#else
-				throw message;
+					File.saveContent(SUtil.getStorageDirectory()
+						+ 'logs/'
+						+ Lib.application.meta.get('file')
+						+ '-'
+						+ Date.now().toString().replace(' ', '-').replace(':', "'")
+						+ '.txt',
+						message + '\n');
+				}
+				catch (e:Dynamic)
+				{
+					#if android
+					Toast.makeText("Error!\nClouldn't save the crash log because:\n" + e, Toast.LENGTH_LONG);
+					#else
+					println("Error!\nClouldn't save the crash log because:\n" + e);
+					#end
+				}
 				#end
+
+				println(message);
+				Application.current.window.alert(message, 'Error!');
+				System.exit(1);
 			}
 			else
 			{
@@ -78,9 +86,29 @@ class Log
 		if (level >= LogLevel.INFO)
 		{
 			#if js
-			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").info("[" + info.className + "] " + message);
+			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").info("[" + info.className + "] " + Std.string(message));
 			#else
 			println("[" + info.className + "] " + Std.string(message));
+			#end
+		}
+	}
+
+	public static function verbose(message:Dynamic, ?info:PosInfos):Void
+	{
+		if (level >= LogLevel.VERBOSE)
+		{
+			println("[" + info.className + "] " + Std.string(message));
+		}
+	}
+
+	public static function warn(message:Dynamic, ?info:PosInfos):Void
+	{
+		if (level >= LogLevel.WARN)
+		{
+			#if js
+			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").warn("[" + info.className + "] WARNING: " + Std.string(message));
+			#else
+			println("[" + info.className + "] WARNING: " + Std.string(message));
 			#end
 		}
 	}
@@ -92,9 +120,9 @@ class Log
 		#elseif flash
 		untyped __global__["trace"](Std.string(message));
 		#elseif js
-		untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log(message);
+		untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log(Std.string(message));
 		#else
-		trace(message);
+		trace(Std.string(message));
 		#end
 	}
 
@@ -105,30 +133,10 @@ class Log
 		#elseif flash
 		untyped __global__["trace"](Std.string(message));
 		#elseif js
-		untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log(message);
+		untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log(Std.string(message));
 		#else
 		trace(Std.string(message));
 		#end
-	}
-
-	public static function verbose(message:Dynamic, ?info:PosInfos):Void
-	{
-		if (level >= LogLevel.VERBOSE)
-		{
-			println("[" + info.className + "] " + message);
-		}
-	}
-
-	public static function warn(message:Dynamic, ?info:PosInfos):Void
-	{
-		if (level >= LogLevel.WARN)
-		{
-			#if js
-			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").warn("[" + info.className + "] WARNING: " + message);
-			#else
-			println("[" + info.className + "] WARNING: " + Std.string(message));
-			#end
-		}
 	}
 
 	private static function __init__():Void
@@ -162,7 +170,9 @@ class Log
 		}
 		if (untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log == null)
 		{
-			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log = function() {};
+			untyped #if haxe4 js.Syntax.code #else __js__ #end ("console").log = function()
+			{
+			};
 		}
 		#end
 	}

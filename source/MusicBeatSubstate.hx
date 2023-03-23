@@ -2,7 +2,6 @@ package;
 
 #if (mobileC || mobileCweb)
 import mobile.flixel.FlxVirtualPad;
-import mobile.MobileControls;
 import flixel.FlxCamera;
 import flixel.input.actions.FlxActionInput;
 import flixel.util.FlxDestroyUtil;
@@ -29,9 +28,7 @@ class MusicBeatSubstate extends FlxSubState
 		return PlayerSettings.player1.controls;
 
 	#if (mobileC || mobileCweb)
-	var mobileControls:MobileControls;
 	var virtualPad:FlxVirtualPad;
-	var trackedInputsMobileControls:Array<FlxActionInput> = [];
 	var trackedInputsVirtualPad:Array<FlxActionInput> = [];
 
 	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
@@ -56,45 +53,6 @@ class MusicBeatSubstate extends FlxSubState
 			remove(virtualPad);
 	}
 
-	public function addMobileControls(DefaultDrawTarget:Bool = true)
-	{
-		if (mobileControls != null)
-			removeMobileControls();
-
-		mobileControls = new MobileControls();
-
-		switch (MobileControls.mode)
-		{
-			case 'Pad-Right' | 'Pad-Left' | 'Pad-Custom':
-				controls.setVirtualPadNOTES(mobileControls.virtualPad, RIGHT_FULL, NONE);
-			case 'Pad-Duo':
-				controls.setVirtualPadNOTES(mobileControls.virtualPad, BOTH_FULL, NONE);
-			case 'Hitbox':
-				controls.setHitBox(mobileControls.hitbox);
-			case 'Keyboard': // do nothing
-		}
-
-		trackedInputsMobileControls = controls.trackedInputsNOTES;
-		controls.trackedInputsNOTES = [];
-
-		var camControls:FlxCamera = new FlxCamera();
-		FlxG.cameras.add(camControls, DefaultDrawTarget);
-		camControls.bgColor.alpha = 0;
-
-		mobileControls.cameras = [camControls];
-		mobileControls.visible = false;
-		add(mobileControls);
-	}
-
-	public function removeMobileControls()
-	{
-		if (trackedInputsMobileControls.length > 0)
-			controls.removeVirtualControlsInput(trackedInputsMobileControls);
-
-		if (mobileControls != null)
-			remove(mobileControls);
-	}
-
 	public function addVirtualPadCamera(DefaultDrawTarget:Bool = true)
 	{
 		if (virtualPad != null)
@@ -110,9 +68,6 @@ class MusicBeatSubstate extends FlxSubState
 	override function destroy()
 	{
 		#if (mobileC || mobileCweb)
-		if (trackedInputsMobileControls.length > 0)
-			controls.removeVirtualControlsInput(trackedInputsMobileControls);
-
 		if (trackedInputsVirtualPad.length > 0)
 			controls.removeVirtualControlsInput(trackedInputsVirtualPad);
 		#end
@@ -122,9 +77,6 @@ class MusicBeatSubstate extends FlxSubState
 		#if (mobileC || mobileCweb)
 		if (virtualPad != null)
 			virtualPad = FlxDestroyUtil.destroy(virtualPad);
-
-		if (mobileControls != null)
-			mobileControls = FlxDestroyUtil.destroy(mobileControls);
 		#end
 	}
 
