@@ -148,8 +148,9 @@ class SUtil
 	}
 
 	/**
- * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
- */
+        * This is mostly a fork of https://github.com/openfl/hxp/blob/master/src/hxp/System.hx#L595
+        */
+        #if sys
 	public static function mkDirs(directory:String):Void
 	{
 		var total:String = '';
@@ -177,7 +178,6 @@ class SUtil
 		}
 	}
 
-	#if sys
 	public static function saveContent(fileName:String = 'file', fileExtension:String = '.json',
 			fileData:String = 'you forgot to add something in your code lol'):Void
 	{
