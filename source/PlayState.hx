@@ -425,7 +425,7 @@ class PlayState extends MusicBeatState
 						add(phillyTrain);
 					}
 
-					trainSound = new FlxSound().#if web loadStream #else loadEmbedded #end(Paths.sound('train_passes', 'week3'));
+					trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes', 'week3'));
 					FlxG.sound.list.add(trainSound);
 
 					// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
@@ -1415,7 +1415,11 @@ class PlayState extends MusicBeatState
 		curSong = songData.song;
 
 		if (SONG.needsVoices)
-			vocals = new FlxSound().#if web loadStream #else loadEmbedded(Paths.voices(PlayState.SONG.song));
+                        #if web
+			vocals = new FlxSound().loadStream(Paths.voices(PlayState.SONG.song));
+                        #else
+                        vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
+                        #end
 		else
 			vocals = new FlxSound();
 
