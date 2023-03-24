@@ -79,7 +79,7 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		#if mobile
+		#if (mobile || web)
 		framerate = 60;
 		#end
 
