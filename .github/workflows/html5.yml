@@ -23,7 +23,7 @@ jobs:
           haxelib install lime 7.9.0 --quiet
           haxelib install openfl 9.1.0 --quiet
           haxelib install actuate 1.8.9 --quiet
-          haxelib --never git flixel https://github.com/mcagabe19/flixel-4.9.0.git
+          haxelib --never git flixel https://github.com/mcagabe19/flixel-4.11.0.git
           haxelib install flixel-ui 2.3.3 --quiet
           haxelib install hscript 2.4.0 --quiet
           haxelib install flixel-addons 2.10.0 --quiet
