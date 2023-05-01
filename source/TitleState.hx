@@ -54,10 +54,6 @@ class TitleState extends MusicBeatState
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 
-		#if !mobile
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
-		#end
-
 		#if mobile
 		if (!sys.FileSystem.exists(SUtil.getStorageDirectory() + "/replays"))
 			sys.FileSystem.createDirectory(SUtil.getStorageDirectory() + "/replays");
