@@ -1497,7 +1497,7 @@ class ChartingState extends MusicBeatState
 
 		if ((data != null) && (data.length > 0))
 		{
-			#if mobile
+			#if (mobile || web)
 			openfl.system.System.setClipboard(data.trim());
 			openfl.Lib.application.window.alert('Saved To Clipboard.', 'Success!');
 			#else
