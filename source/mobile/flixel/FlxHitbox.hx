@@ -57,7 +57,7 @@ class FlxHitbox extends FlxSpriteGroup
 		shape.graphics.endFill();
 
 		var bitmap:BitmapData = new BitmapData(Width, Height, true, 0);
-		bitmap.draw(shape);
+		bitmap.draw(shape, true);
 		return bitmap;
 	}
 
@@ -66,6 +66,7 @@ class FlxHitbox extends FlxSpriteGroup
 		var hint:FlxButton = new FlxButton(X, Y);
 		hint.loadGraphic(createHintGraphic(Width, Height, Color));
 		hint.solid = false;
+                hint.multiTouch = true;
 		hint.immovable = true;
 		hint.scrollFactor.set();
 		hint.alpha = 0.00001;

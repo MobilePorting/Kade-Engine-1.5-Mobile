@@ -431,7 +431,7 @@ class Controls extends FlxActionSet
 		}
 	}
 
-	public function removeVirtualControlsInput(Tinputs:Array<FlxActionInput>)
+	public function removeVirtualControlsInput(Tinputs:Array<FlxActionInput>):Void
 	{
 		for (action in this.digitalActions)
 		{

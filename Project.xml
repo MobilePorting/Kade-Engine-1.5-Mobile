@@ -176,17 +176,16 @@
                 <certificate path="key.keystore" password="123456" alias="kade" alias-password="123456" unless="debug"/>
 		<config>
 			<!--Gradle-->
-			<android gradle-version="7.4.2" gradle-plugin="7.3.1" />
+			<!--<android gradle-version="7.4.2" gradle-plugin="7.3.1" />-->
 
 			<!--Target SDK-->
-			<android target-sdk-version="29" if="${lime &lt; 8.1.0}" />
+			<android target-sdk-version="29" if="${lime &lt; 8.0.0}" />
 		</config>
 	</section>
 
 	<section if="ios">
 		<!--Dependency--> 
-		<dependency name="Metal.framework" />
-		<dependency name="WebKit.framework" />
+		<dependency name="Metal.framework" if="${lime &lt; 8.0.0}" />
 	</section>
 
 	<!-- _________________________________ Custom _______________________________ -->

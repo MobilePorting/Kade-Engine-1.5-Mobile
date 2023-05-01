@@ -21,7 +21,6 @@ install:
   - haxelib install flixel-addons 2.11.0 --quiet
   - haxelib install flixel-ui 2.3.3 --quiet
   - haxelib install hscript 2.4.0 --quiet
-  - haxelib git polymod https://github.com/mcagabe19/polymod-for-kade1.5.git
   - haxelib install actuate 1.8.9 --quiet
   - cd /home/appveyor/projects/kade-engine-1-5-mobile-ubuntu18-04-32
 

@@ -59,10 +59,10 @@ class FlxVirtualPad extends FlxSpriteGroup
 
 	public var buttonA:FlxButton = new FlxButton(0, 0);
 	public var buttonB:FlxButton = new FlxButton(0, 0);
+	public var buttonP:FlxButton = new FlxButton(0, 0);
 	public var buttonC:FlxButton = new FlxButton(0, 0);
 	public var buttonD:FlxButton = new FlxButton(0, 0);
 	public var buttonE:FlxButton = new FlxButton(0, 0);
-	public var buttonP:FlxButton = new FlxButton(0, 0);
 	public var buttonV:FlxButton = new FlxButton(0, 0);
 	public var buttonX:FlxButton = new FlxButton(0, 0);
 	public var buttonU:FlxButton = new FlxButton(0, 0);
